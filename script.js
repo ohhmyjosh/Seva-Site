@@ -241,82 +241,95 @@
     "</svg>";
 
   (function () {
-    if (document.querySelector(".scroll-rail")) return;
-
-    var rail = document.createElement("div");
-    rail.className = "scroll-rail";
-    rail.setAttribute("aria-hidden", "true");
-
-    var fill = document.createElement("span");
-    fill.className = "scroll-rail__fill";
+    if (document.querySelector(".scroll-ball")) return;
 
     var ball = document.createElement("span");
     ball.className = "scroll-ball";
+    ball.setAttribute("aria-hidden", "true");
     ball.innerHTML = BALL_SVG;
+    document.body.appendChild(ball);
 
-    rail.appendChild(fill);
-    rail.appendChild(ball);
-    document.body.appendChild(rail);
+    var SIZE = 40;
+    var TOP = 120;      // resting band, measured from the top of the viewport
+    var BOTTOM = 90;    // ...and from the bottom
 
-    var target = 0;
-    var current = 0;
-    var railHeight = 0;
+    var travel = 0;
+    var pos = 0;        // current vertical offset
+    var vel = 0;        // vertical velocity, in px per frame
+    var rot = 0;        // accumulated rotation, degrees
     var running = false;
 
     var measure = function () {
-      railHeight = rail.clientHeight;
+      travel = Math.max(0, window.innerHeight - TOP - BOTTOM - SIZE);
     };
 
-    var progress = function () {
+    var restingPlace = function () {
       var max = document.documentElement.scrollHeight - window.innerHeight;
-      if (max <= 0) return 0;
-      return Math.min(1, Math.max(0, window.scrollY / max));
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      return p * travel;
     };
 
-    var paint = function (y) {
-      // Rotate by real arc length: degrees = distance / circumference * 360.
-      // Read the rendered width so resizing the ball never desyncs the roll.
-      var deg = (y / (Math.PI * (ball.offsetWidth || 46))) * 360;
-      ball.style.transform = "translate3d(0," + y.toFixed(2) + "px,0) rotate(" + deg.toFixed(2) + "deg)";
-      fill.style.height = y.toFixed(2) + "px";
+    var paint = function () {
+      // Sway sideways with the velocity, the way a ball leans into a roll.
+      var sway = Math.max(-16, Math.min(16, vel * SWAY));
+      ball.style.transform =
+        "translate3d(" + sway.toFixed(2) + "px," + (TOP + pos).toFixed(2) + "px,0) " +
+        "rotate(" + rot.toFixed(2) + "deg)";
     };
 
-    if (reduceMotion) {
-      // No easing loop: park the ball wherever the reader is.
-      var jump = function () {
-        measure();
-        current = progress() * railHeight;
-        paint(current);
-      };
-      jump();
-      window.addEventListener("scroll", jump, { passive: true });
-      window.addEventListener("resize", jump);
-      return;
-    }
+    // One physics path, two tunings. A scroll-linked position is no more
+    // motion than a scrollbar, so reduced-motion keeps the roll — it just
+    // stiffens the spring so the ball arrives without bouncing.
+    var STIFF = reduceMotion ? 0.3 : 0.075;
+    var DAMP = reduceMotion ? 0.55 : 0.86;
+    var SWAY = reduceMotion ? 0 : 0.85;
+
+    var lastFrame = 0;
 
     var tick = function () {
-      target = progress() * railHeight;
-      current += (target - current) * 0.12;
-      paint(current);
-      // Idle once it has settled; the next scroll wakes it again.
-      if (Math.abs(target - current) < 0.15) {
-        current = target;
-        paint(current);
+      lastFrame = Date.now();
+      var target = restingPlace();
+      vel = (vel + (target - pos) * STIFF) * DAMP;
+      pos += vel;
+      rot += (vel / (Math.PI * SIZE)) * 360;
+      paint();
+
+      if (Math.abs(vel) < 0.05 && Math.abs(target - pos) < 0.4) {
+        pos = target;
+        vel = 0;
+        paint();
         running = false;
         return;
       }
       requestAnimationFrame(tick);
     };
 
+    // If frames are not arriving — a throttled tab, a browser that pauses
+    // rAF, or no rAF at all — snap to the resting place on scroll instead.
+    // The ball then tracks the page exactly; it just loses the overshoot.
+    var snap = function () {
+      var target = restingPlace();
+      rot += ((target - pos) / (Math.PI * SIZE)) * 360;
+      pos = target;
+      vel = 0;
+      paint();
+    };
+
+    var hasRaf = typeof window.requestAnimationFrame === "function";
+
     var wake = function () {
-      if (running) return;
-      running = true;
-      requestAnimationFrame(tick);
+      if (!hasRaf) return snap();
+      if (!running) {
+        running = true;
+        requestAnimationFrame(tick);
+      }
+      // Frames have stalled: keep the ball honest without them.
+      if (Date.now() - lastFrame > 300) snap();
     };
 
     measure();
-    current = progress() * railHeight;
-    paint(current);
+    pos = restingPlace();
+    paint();
 
     window.addEventListener("scroll", wake, { passive: true });
     window.addEventListener("resize", function () {

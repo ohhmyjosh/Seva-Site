@@ -1988,43 +1988,24 @@ p {
 
 /* --------------------------------------------------------------------------
    14b. Scroll ball
-   A football rolling down a rail at the edge of the page. It doubles as the
-   read-progress indicator, and it rotates by real arc length so the roll is
-   physically honest rather than an arbitrary spin.
+   A football that floats free at the right of the viewport. Its resting place
+   tracks how far down the page you are, and a damped spring lets it overshoot
+   and settle when you scroll — so it behaves like an object with weight
+   rather than a progress bar. Rotation comes from real travel, so it rolls.
    -------------------------------------------------------------------------- */
 
-.scroll-rail {
+.scroll-ball {
   position: fixed;
-  top: calc(var(--head-h) + 3.5rem);
-  bottom: 3.5rem;
-  /* Clear of the browser scrollbar, or the ball reads as UI chrome. */
-  right: clamp(1.6rem, 3.4vw, 3.5rem);
-  width: 2px;
+  top: 0;
+  right: clamp(1.5rem, 3.2vw, 3.25rem);
+  width: 40px;
+  height: 40px;
   z-index: 60;
   pointer-events: none;
-  background: rgba(148, 163, 184, 0.26);
-}
-
-.scroll-rail__fill {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 0;
-  background: linear-gradient(180deg, rgba(47, 201, 120, 0.15), var(--accent));
-  transform-origin: top;
-}
-
-.scroll-ball {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin-left: -23px;
-  margin-top: -23px;
   will-change: transform;
   filter:
-    drop-shadow(0 0 14px rgba(47, 201, 120, 0.35))
-    drop-shadow(0 8px 14px rgba(0, 0, 0, 0.6));
+    drop-shadow(0 0 16px rgba(47, 201, 120, 0.3))
+    drop-shadow(0 10px 16px rgba(0, 0, 0, 0.55));
 }
 
 .scroll-ball svg {
@@ -2034,7 +2015,7 @@ p {
 }
 
 @media (max-width: 900px) {
-  .scroll-rail {
+  .scroll-ball {
     display: none;
   }
 }
