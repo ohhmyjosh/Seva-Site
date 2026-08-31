@@ -253,18 +253,21 @@
     var BOUNCE = 0.74;       // energy kept on a wall or floor hit
     var AIR = 0.995;         // drag while in flight
     var ROLL = 0.982;        // drag while touching the floor
-    var KICK_RANGE = 96;     // how close the pointer has to get
-    var KICK_POWER = 5.2;
+    var KICK_RANGE = 44;     // how close the pointer has to get
+    var KICK_POWER = 1.7;
+    var KICK_SPEED = 0.09;   // extra force from how fast the pointer moves
+    var MIN_SPEED = 3;       // ignore slow drifts entirely
+    var MAX_V = 20;          // velocity ceiling, so it never rockets away
     var SLEEP = 0.28;
 
-    var d = 46, r = 23;      // diameter and radius, re-read from the element
+    var d = 30, r = 15;      // diameter and radius, re-read from the element
     var x = 0, y = 0, vx = 0, vy = 0, rot = 0;
     var running = false, idle = 0;
     var px = -999, py = -999, pvx = 0, pvy = 0;
     var bounds = { l: 0, r: 0, t: 0, b: 0 };
 
     var measure = function () {
-      d = ball.offsetWidth || 46;
+      d = ball.offsetWidth || 30;
       r = d / 2;
       var head = parseFloat(
         getComputedStyle(document.documentElement).getPropertyValue("--head-h")
@@ -344,22 +347,24 @@
       requestAnimationFrame(loop);
     };
 
-    // Kick: the closer the pointer and the faster it is moving, the harder.
-    var kick = function (mx, my, boost) {
+    // Kick: you have to actually move the pointer into it. A slow drift past
+    // does nothing, so the ball is not permanently twitching at the edge of
+    // the cursor.
+    var kick = function (mx, my, boost, speed) {
       var dx = x - mx;
       var dy = y - my;
       var dist = Math.sqrt(dx * dx + dy * dy) || 0.001;
       var reach = r + KICK_RANGE;
       if (dist > reach) return;
 
-      var force = (1 - dist / reach) * KICK_POWER * (boost || 1);
-      var speed = Math.min(28, Math.sqrt(pvx * pvx + pvy * pvy));
-      force += speed * 0.32 * (1 - dist / reach);
+      var near = 1 - dist / reach;
+      var force = near * KICK_POWER * (boost || 1);
+      if (speed) force += Math.min(26, speed) * KICK_SPEED * near;
 
       vx += (dx / dist) * force;
-      vy += (dy / dist) * force - 1.4;   // always lift a little, so it pops
-      vx = Math.max(-34, Math.min(34, vx));
-      vy = Math.max(-34, Math.min(34, vy));
+      vy += (dy / dist) * force - 0.6;   // a little lift, so it pops
+      vx = Math.max(-MAX_V, Math.min(MAX_V, vx));
+      vy = Math.max(-MAX_V, Math.min(MAX_V, vy));
       wake();
     };
 
@@ -368,11 +373,15 @@
       pvy = e.clientY - py;
       px = e.clientX;
       py = e.clientY;
-      kick(px, py);
+      var speed = Math.sqrt(pvx * pvx + pvy * pvy);
+      // Below the threshold the pointer is just passing through.
+      if (speed < MIN_SPEED) return;
+      kick(px, py, 1, speed);
     }, { passive: true });
 
+    // A click is the deliberate one, so it still hits properly.
     window.addEventListener("click", function (e) {
-      kick(e.clientX, e.clientY, 2.6);
+      kick(e.clientX, e.clientY, 4.5, 0);
     }, { passive: true });
 
     // Scrolling jostles it, the way a ball on a moving surface would move.
@@ -380,8 +389,8 @@
     window.addEventListener("scroll", function () {
       var delta = window.scrollY - lastScroll;
       lastScroll = window.scrollY;
-      vy -= Math.max(-9, Math.min(9, delta * 0.22));
-      vx += Math.max(-3, Math.min(3, delta * 0.05));
+      vy -= Math.max(-5, Math.min(5, delta * 0.12));
+      vx += Math.max(-1.6, Math.min(1.6, delta * 0.028));
       wake();
     }, { passive: true });
 
