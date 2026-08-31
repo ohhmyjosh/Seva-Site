@@ -1997,9 +1997,9 @@ p {
 .scroll-ball {
   position: fixed;
   top: 0;
-  right: clamp(1.5rem, 3.2vw, 3.25rem);
-  width: 40px;
-  height: 40px;
+  right: clamp(2.5rem, 5vw, 5.5rem);
+  width: 46px;
+  height: 46px;
   z-index: 60;
   pointer-events: none;
   will-change: transform;

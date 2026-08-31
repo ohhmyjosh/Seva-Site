@@ -249,7 +249,7 @@
     ball.innerHTML = BALL_SVG;
     document.body.appendChild(ball);
 
-    var SIZE = 40;
+    var SIZE = 46;
     var TOP = 120;      // resting band, measured from the top of the viewport
     var BOTTOM = 90;    // ...and from the bottom
 
@@ -271,18 +271,19 @@
 
     var paint = function () {
       // Sway sideways with the velocity, the way a ball leans into a roll.
-      var sway = Math.max(-16, Math.min(16, vel * SWAY));
+      var sway = Math.max(-70, Math.min(24, vel * SWAY));
       ball.style.transform =
         "translate3d(" + sway.toFixed(2) + "px," + (TOP + pos).toFixed(2) + "px,0) " +
         "rotate(" + rot.toFixed(2) + "deg)";
     };
 
-    // One physics path, two tunings. A scroll-linked position is no more
-    // motion than a scrollbar, so reduced-motion keeps the roll — it just
-    // stiffens the spring so the ball arrives without bouncing.
-    var STIFF = reduceMotion ? 0.3 : 0.075;
-    var DAMP = reduceMotion ? 0.55 : 0.86;
-    var SWAY = reduceMotion ? 0 : 0.85;
+    // Full spring for everyone, matching the reference this was modelled on.
+    // Deliberate call: the ball is small, peripheral and decorative, and the
+    // whole point of it is the bounce. Everything else on the site still
+    // honours prefers-reduced-motion.
+    var STIFF = 0.055;
+    var DAMP = 0.9;
+    var SWAY = 2.2;
 
     var lastFrame = 0;
 
