@@ -1158,7 +1158,48 @@ p {
 .pin--me {
   background: var(--on-ink);
   animation: none;
-  box-shadow: 0 0 0 4px rgba(244, 246, 250, 0.15);
+  z-index: 3;
+  /* A hairline ring on the dot, then a soft accuracy disc around it — the
+     shape every map app uses for "you are here". */
+  box-shadow:
+    0 0 0 2px rgba(244, 246, 250, 0.55),
+    0 0 0 10px rgba(47, 201, 120, 0.1),
+    0 0 0 11px rgba(47, 201, 120, 0.22);
+}
+
+/* Two rings, offset by half a cycle, so the ping never fully stops —
+   something has been spotted here. */
+.pin--me::before,
+.pin--me::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-bright);
+  animation: radar 3s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+.pin--me::after {
+  animation-delay: 1.5s;
+}
+
+@keyframes radar {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(6);
+    opacity: 0;
+  }
 }
 
 .pop {
@@ -1997,8 +2038,8 @@ p {
   position: fixed;
   top: 0;
   left: 0;
-  width: 46px;
-  height: 46px;
+  width: 30px;
+  height: 30px;
   z-index: 60;
   /* Never blocks a link: the kick is computed from pointer coordinates. */
   pointer-events: none;
@@ -2016,8 +2057,8 @@ p {
 
 @media (max-width: 700px) {
   .play-ball {
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -2583,6 +2624,13 @@ p {
     animation: none;
   }
 
+  /* Deliberately exempt, like the ball: this is the one small "live" signal
+     on the page, and being live is the whole point of it. */
+  .pin--me::before,
+  .pin--me::after {
+    animation-duration: 3s !important;
+    animation-iteration-count: infinite !important;
+  }
 }
 
 @media print {
