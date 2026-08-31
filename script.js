@@ -241,102 +241,178 @@
     "</svg>";
 
   (function () {
-    if (document.querySelector(".scroll-ball")) return;
+    if (document.querySelector(".play-ball")) return;
 
     var ball = document.createElement("span");
-    ball.className = "scroll-ball";
+    ball.className = "play-ball";
     ball.setAttribute("aria-hidden", "true");
     ball.innerHTML = BALL_SVG;
     document.body.appendChild(ball);
 
-    var SIZE = 46;
-    var TOP = 120;      // resting band, measured from the top of the viewport
-    var BOTTOM = 90;    // ...and from the bottom
+    var GRAVITY = 0.62;      // px per frame per frame
+    var BOUNCE = 0.74;       // energy kept on a wall or floor hit
+    var AIR = 0.995;         // drag while in flight
+    var ROLL = 0.982;        // drag while touching the floor
+    var KICK_RANGE = 96;     // how close the pointer has to get
+    var KICK_POWER = 5.2;
+    var SLEEP = 0.28;
 
-    var travel = 0;
-    var pos = 0;        // current vertical offset
-    var vel = 0;        // vertical velocity, in px per frame
-    var rot = 0;        // accumulated rotation, degrees
-    var running = false;
+    var d = 46, r = 23;      // diameter and radius, re-read from the element
+    var x = 0, y = 0, vx = 0, vy = 0, rot = 0;
+    var running = false, idle = 0;
+    var px = -999, py = -999, pvx = 0, pvy = 0;
+    var bounds = { l: 0, r: 0, t: 0, b: 0 };
 
     var measure = function () {
-      travel = Math.max(0, window.innerHeight - TOP - BOTTOM - SIZE);
+      d = ball.offsetWidth || 46;
+      r = d / 2;
+      var head = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--head-h")
+      );
+      // --head-h is in rem; fall back to a sensible pixel value.
+      var headPx = head ? head * 16 : 72;
+
+      // A window that is restoring, hidden or still laying out can report a
+      // zero viewport. Measuring then would put the ball at a negative
+      // coordinate — off screen, with nothing to bring it back.
+      var vw = window.innerWidth || document.documentElement.clientWidth || 0;
+      var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+      if (vw < 240 || vh < 240) return false;
+
+      bounds.l = r + 8;
+      bounds.r = vw - r - 8;
+      bounds.t = headPx + r + 8;
+      bounds.b = vh - r - 8;
+      return true;
     };
 
-    var restingPlace = function () {
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      return p * travel;
+    var reposition = function () {
+      x = Math.max(bounds.l, Math.min(bounds.r, x));
+      y = Math.max(bounds.t, Math.min(bounds.b, y));
+      paint();
     };
 
     var paint = function () {
-      // Sway sideways with the velocity, the way a ball leans into a roll.
-      var sway = Math.max(-70, Math.min(24, vel * SWAY));
       ball.style.transform =
-        "translate3d(" + sway.toFixed(2) + "px," + (TOP + pos).toFixed(2) + "px,0) " +
-        "rotate(" + rot.toFixed(2) + "deg)";
+        "translate3d(" + (x - r).toFixed(1) + "px," + (y - r).toFixed(1) + "px,0) " +
+        "rotate(" + rot.toFixed(1) + "deg)";
     };
 
-    // Full spring for everyone, matching the reference this was modelled on.
-    // Deliberate call: the ball is small, peripheral and decorative, and the
-    // whole point of it is the bounce. Everything else on the site still
-    // honours prefers-reduced-motion.
-    var STIFF = 0.055;
-    var DAMP = 0.9;
-    var SWAY = 2.2;
+    var step = function () {
+      vy += GRAVITY;
+      x += vx;
+      y += vy;
 
-    var lastFrame = 0;
+      var onGround = false;
 
-    var tick = function () {
-      lastFrame = Date.now();
-      var target = restingPlace();
-      vel = (vel + (target - pos) * STIFF) * DAMP;
-      pos += vel;
-      rot += (vel / (Math.PI * SIZE)) * 360;
-      paint();
-
-      if (Math.abs(vel) < 0.05 && Math.abs(target - pos) < 0.4) {
-        pos = target;
-        vel = 0;
-        paint();
-        running = false;
-        return;
+      if (x < bounds.l) { x = bounds.l; vx = -vx * BOUNCE; }
+      if (x > bounds.r) { x = bounds.r; vx = -vx * BOUNCE; }
+      if (y < bounds.t) { y = bounds.t; vy = -vy * BOUNCE; }
+      if (y > bounds.b) {
+        y = bounds.b;
+        vy = -vy * BOUNCE;
+        onGround = true;
+        // Stop micro-bouncing once there is barely any energy left.
+        if (Math.abs(vy) < 1.2) vy = 0;
       }
-      requestAnimationFrame(tick);
-    };
 
-    // If frames are not arriving — a throttled tab, a browser that pauses
-    // rAF, or no rAF at all — snap to the resting place on scroll instead.
-    // The ball then tracks the page exactly; it just loses the overshoot.
-    var snap = function () {
-      var target = restingPlace();
-      rot += ((target - pos) / (Math.PI * SIZE)) * 360;
-      pos = target;
-      vel = 0;
+      var drag = onGround ? ROLL : AIR;
+      vx *= drag;
+      if (!onGround) vy *= AIR;
+
+      // Rotation follows horizontal travel, so the roll matches the ground.
+      rot += (vx / (Math.PI * d)) * 360;
       paint();
+
+      var still = Math.abs(vx) < SLEEP && Math.abs(vy) < SLEEP && y >= bounds.b - 0.6;
+      idle = still ? idle + 1 : 0;
+      return idle < 30;
     };
 
-    var hasRaf = typeof window.requestAnimationFrame === "function";
+    var loop = function () {
+      if (step()) {
+        requestAnimationFrame(loop);
+      } else {
+        running = false;
+      }
+    };
 
     var wake = function () {
-      if (!hasRaf) return snap();
-      if (!running) {
-        running = true;
-        requestAnimationFrame(tick);
-      }
-      // Frames have stalled: keep the ball honest without them.
-      if (Date.now() - lastFrame > 300) snap();
+      idle = 0;
+      if (running) return;
+      running = true;
+      requestAnimationFrame(loop);
     };
 
-    measure();
-    pos = restingPlace();
-    paint();
+    // Kick: the closer the pointer and the faster it is moving, the harder.
+    var kick = function (mx, my, boost) {
+      var dx = x - mx;
+      var dy = y - my;
+      var dist = Math.sqrt(dx * dx + dy * dy) || 0.001;
+      var reach = r + KICK_RANGE;
+      if (dist > reach) return;
 
-    window.addEventListener("scroll", wake, { passive: true });
-    window.addEventListener("resize", function () {
-      measure();
+      var force = (1 - dist / reach) * KICK_POWER * (boost || 1);
+      var speed = Math.min(28, Math.sqrt(pvx * pvx + pvy * pvy));
+      force += speed * 0.32 * (1 - dist / reach);
+
+      vx += (dx / dist) * force;
+      vy += (dy / dist) * force - 1.4;   // always lift a little, so it pops
+      vx = Math.max(-34, Math.min(34, vx));
+      vy = Math.max(-34, Math.min(34, vy));
       wake();
+    };
+
+    window.addEventListener("mousemove", function (e) {
+      pvx = e.clientX - px;
+      pvy = e.clientY - py;
+      px = e.clientX;
+      py = e.clientY;
+      kick(px, py);
+    }, { passive: true });
+
+    window.addEventListener("click", function (e) {
+      kick(e.clientX, e.clientY, 2.6);
+    }, { passive: true });
+
+    // Scrolling jostles it, the way a ball on a moving surface would move.
+    var lastScroll = window.scrollY;
+    window.addEventListener("scroll", function () {
+      var delta = window.scrollY - lastScroll;
+      lastScroll = window.scrollY;
+      vy -= Math.max(-9, Math.min(9, delta * 0.22));
+      vx += Math.max(-3, Math.min(3, delta * 0.05));
+      wake();
+    }, { passive: true });
+
+    var refit = function () {
+      if (!measure()) return;
+      reposition();
+      wake();
+    };
+
+    window.addEventListener("resize", refit);
+    window.addEventListener("orientationchange", refit);
+    window.addEventListener("load", refit);
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) refit();
     });
+
+    var launch = function () {
+      if (!measure()) {
+        // Viewport not usable yet — try again on the next frame.
+        return requestAnimationFrame(launch);
+      }
+      // Drop it in from the upper right so it announces itself on arrival.
+      x = bounds.r - 40;
+      y = bounds.t + 20;
+      vx = -2.2;
+      vy = 0;
+      paint();
+      wake();
+    };
+
+    launch();
   })();
 
   /* ---- Footer year ------------------------------------------------------ */
