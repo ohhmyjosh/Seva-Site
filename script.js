@@ -274,8 +274,9 @@
     };
 
     var paint = function (y) {
-      // 30px ball -> circumference = pi * 30. Degrees per pixel travelled.
-      var deg = (y / (Math.PI * 30)) * 360;
+      // Rotate by real arc length: degrees = distance / circumference * 360.
+      // Read the rendered width so resizing the ball never desyncs the roll.
+      var deg = (y / (Math.PI * (ball.offsetWidth || 46))) * 360;
       ball.style.transform = "translate3d(0," + y.toFixed(2) + "px,0) rotate(" + deg.toFixed(2) + "deg)";
       fill.style.height = y.toFixed(2) + "px";
     };

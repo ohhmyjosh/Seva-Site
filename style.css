@@ -1997,11 +1997,12 @@ p {
   position: fixed;
   top: calc(var(--head-h) + 3.5rem);
   bottom: 3.5rem;
-  right: clamp(0.9rem, 2vw, 1.9rem);
+  /* Clear of the browser scrollbar, or the ball reads as UI chrome. */
+  right: clamp(1.6rem, 3.4vw, 3.5rem);
   width: 2px;
   z-index: 60;
   pointer-events: none;
-  background: rgba(148, 163, 184, 0.16);
+  background: rgba(148, 163, 184, 0.26);
 }
 
 .scroll-rail__fill {
@@ -2016,12 +2017,14 @@ p {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 30px;
-  height: 30px;
-  margin-left: -15px;
-  margin-top: -15px;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  margin-top: -23px;
   will-change: transform;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+  filter:
+    drop-shadow(0 0 14px rgba(47, 201, 120, 0.35))
+    drop-shadow(0 8px 14px rgba(0, 0, 0, 0.6));
 }
 
 .scroll-ball svg {
