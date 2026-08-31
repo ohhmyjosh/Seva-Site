@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product — Seva App</title>
+<meta name="description" content="What is actually built: React and Vite on Capacitor, a Leaflet live map, Supabase with server-side functions, per-category onboarding, bilingual screens, OTP-confirmed jobs — and an honest account of what is deferred.">
+<meta name="theme-color" content="#0a0b0d">
+<link rel="canonical" href="https://seva-site.vercel.app/product.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Seva App">
+<meta property="og:url" content="https://seva-site.vercel.app/product.html">
+<meta property="og:title" content="Product — Seva App">
+<meta property="og:description" content="What is actually built: React and Vite on Capacitor, a Leaflet live map, Supabase with server-side functions, per-category onboarding, bilingual screens, OTP-confirmed jobs — and an honest account of what is deferred.">
+<meta property="og:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Product — Seva App">
+<meta name="twitter:description" content="What is actually built: React and Vite on Capacitor, a Leaflet live map, Supabase with server-side functions, per-category onboarding, bilingual screens, OTP-confirmed jobs — and an honest account of what is deferred.">
+<meta name="twitter:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="brand" href="index.html" aria-label="Seva App — home"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-text"><span class="brand-name">Seva</span><span class="brand-tag">Kaam bhi, pehchaan bhi</span></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="product.html" aria-current="page">Product</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="strategy.html">Model</a>
+      <a href="traction.html">Roadmap</a>
+      <a class="btn btn--accent head-cta" href="partner.html">Start a conversation <span class="arw" aria-hidden="true">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="band page-head">
+    <div class="wrap">
+      <div class="page-head__inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Seva</a> <span aria-hidden="true">/</span> <span>Product</span></nav>
+        <h1>It is built. Here is exactly what it does.</h1>
+        <p class="lead">Seva is not a deck with a mockup attached. The app runs, the database enforces the rules, and the admin console approves real workers. This page is the technical account &mdash; including the parts that are deliberately not finished.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--bone" id="stack">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">The stack</span>
+        <h2 class="h2">Boring technology, deliberately.</h2>
+        <p class="body">Every choice here was made for a small team maintaining a live product in a place where a support call is a person walking to your door. Nothing exotic, nothing that needs a specialist to keep alive.</p>
+      </div>
+
+      <dl class="deflist reveal">
+        <div>
+          <dt>React + Vite</dt>
+          <dd>A mobile-first single-page app. Fast builds, instant reload, and a static bundle any host can serve.</dd>
+        </div>
+        <div>
+          <dt>Leaflet</dt>
+          <dd>The live worker map. Open, lightweight, and free of per-view billing surprises at exactly the moment a pilot starts working.</dd>
+        </div>
+        <div>
+          <dt>Supabase (PostgreSQL)</dt>
+          <dd>Workers, bookings and call sessions in Postgres. Registration, booking creation and every admin action run through server-side functions rather than client writes.</dd>
+        </div>
+        <div>
+          <dt>Capacitor</dt>
+          <dd>The same codebase ships as an Android app with location, camera and gallery permissions declared. Geolocation and uploads use standard web APIs, so iOS is a build step rather than a rewrite.</dd>
+        </div>
+        <div>
+          <dt>A services layer that owns the database</dt>
+          <dd>Pages and components on top, one services layer underneath that owns every database call. It also detects schema drift &mdash; unknown columns and legacy statuses &mdash; and adapts, so an evolving database never hard-fails in a worker&rsquo;s hand.</dd>
+        </div>
+        <div>
+          <dt>Deployed on Vercel</dt>
+          <dd>SPA routing and asset caching configured, so reloading a deep link works instead of 404-ing.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band" id="verification">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Verification</span>
+        <h2 class="h2">A worker&rsquo;s status is the whole safety model.</h2>
+        <p class="body body--wide">Every worker sits in exactly one of four states, and that state alone decides whether a household can see them. There is no second list, no override, and no way to be halfway visible.</p>
+      </div>
+
+      <div class="mesh mesh--4 reveal">
+        <article class="cell">
+          <span class="cell__no">Pending</span>
+          <h3 class="h4">Submitted, not visible</h3>
+          <p>Where every self-registered worker starts. The application is complete and waiting for a person to read it.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">Approved</span>
+          <h3 class="h4">On the map</h3>
+          <p>Approval sets the verified flag too. Both are required together before a worker appears to anyone.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">Rejected</span>
+          <h3 class="h4">Not listed</h3>
+          <p>The application did not pass review. Verification is cleared and the profile stays off the public map.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">Suspended</span>
+          <h3 class="h4">Removed</h3>
+          <p>An approved worker can be taken down immediately. Trust that cannot be withdrawn is not trust, it is a badge.</p>
+        </article>
+      </div>
+
+      <div class="grid cols-2" style="margin-top:clamp(2rem,4vw,3.5rem)">
+        <div class="panel reveal">
+          <span class="eyebrow eyebrow--plain">The rule</span>
+          <h3 class="h3">Approved <em style="font-style:normal">and</em> verified, or invisible.</h3>
+          <p>A worker appears on the public map only when both conditions hold. If a profile is missing exact coordinates the app falls back to locality coordinates rather than dropping the person entirely &mdash; being roughly placed is better than being erased.</p>
+        </div>
+        <div class="panel panel--quiet reveal">
+          <span class="eyebrow eyebrow--plain">Badges never overstate</span>
+          <p>Verification badges are independent checks, and only the ones that <em class="serif-em">passed</em> are shown. There is deliberately no failed or pending state: a plumber has no education to verify, and rendering &ldquo;Education not verified&rdquo; would make an ordinary profile look deficient for a question nobody asked of them.</p>
+          <p>Badges are derived from the underlying records, so one can never claim more than the evidence behind it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--bone" id="onboarding">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Onboarding</span>
+        <h2 class="h2">Three profiles, because one form for everyone insults somebody.</h2>
+        <p class="body">Asking a maid for a graduation year is nonsense. Letting an electrician skip employment history defeats the point of verification. So the category a worker picks decides which profile they get.</p>
+      </div>
+
+      <div class="mesh mesh--3 reveal">
+        <article class="cell">
+          <span class="cell__no">General</span>
+          <h3 class="h4">Maid, labour, general helper</h3>
+          <p>The lightest set. Identity, locality, rate and availability &mdash; nothing that would stall a registration for no safety gain.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">Skilled</span>
+          <h3 class="h4">Electrician, plumber, carpenter, mason, repairs</h3>
+          <p>Adds employment history and references &mdash; the checks that matter for someone doing paid work inside a home.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">Professional</span>
+          <h3 class="h4">Physiotherapist, counsellor, tutor</h3>
+          <p>Adds qualifications and certificates, because that is what a customer is actually buying in these categories.</p>
+        </article>
+      </div>
+
+      <div class="split" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <div class="reveal">
+          <h3 class="h3">Portfolio means different things to different trades</h3>
+          <p class="body" style="margin-top:1.25rem">A painter&rsquo;s photos sell the job. A tutor&rsquo;s certificates do. A counsellor may want to show their clinic. A general helper has nothing to photograph &mdash; and asking them for images only makes onboarding longer and their profile look emptier. So the category decides the label, the prompt, and whether the step is offered at all.</p>
+        </div>
+        <div class="reveal">
+          <dl class="deflist">
+            <div><dt>Recent work</dt><dd>Up to six photos, for trades customers pick with their eyes.</dd></div>
+            <div><dt>Certificates</dt><dd>Up to four, for teaching and training categories.</dd></div>
+            <div><dt>Clinic or office</dt><dd>Optional, up to three &mdash; so a client knows what to expect.</dd></div>
+            <div><dt>None</dt><dd>Offered to nobody who has nothing to show. An empty gallery is worse than no gallery.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="inclusion">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <span class="eyebrow">Inclusion</span>
+          <p class="pull" style="margin-top:1.75rem">A platform for informal workers that only works on a smartphone is not a platform for informal workers.</p>
+        </div>
+        <div class="reveal">
+          <p class="body">The map needs GPS, and GPS needs a smartphone. That excludes exactly the workers who most need visibility &mdash; so keypad-phone workers are handled as a first-class case, not an edge case.</p>
+          <p class="body">An admin registers them by hand, records a fixed locality, and saves their number. They are shown on the map by <em class="serif-em">locality</em> rather than live GPS, and they receive calls directly. No app required, and no live movement tracking implied that does not exist.</p>
+          <div class="callout" style="margin-top:2rem">
+            <span class="callout__label">Why it is designed this way</span>
+            <p>Manual onboarding by an admin is a first-class path in the product, because many of the workers Seva exists for are not tech-savvy. If the field team has to sign someone up on paper at a labour chowk and enter it later, that is a supported flow &mdash; not a workaround.</p>
+          </div>
+        </div>
+      </div>
+
+      <dl class="facts reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <div><dt>Interface languages</dt><dd>English &amp; <span lang="hi" style="font-family:var(--f-deva)">हिन्दी</span></dd></div>
+        <div><dt>Hiring languages</dt><dd>9, incl. Bhojpuri</dd></div>
+        <div><dt>Varanasi localities mapped</dt><dd>15</dd></div>
+        <div><dt>Service categories</dt><dd>39</dd></div>
+      </dl>
+
+      <p class="body body--wide reveal" style="margin-top:1.75rem">A worker records the languages they can be hired in &mdash; Hindi, Bhojpuri, English, Urdu, Bengali, Marathi, Tamil, Telugu, Nepali, ordered by how common they actually are around Varanasi. There is deliberately no &ldquo;other&rdquo; option: a free-text language nobody can filter on helps no customer choose.</p>
+    </div>
+  </section>
+
+  <section class="band band--ink-2" id="details">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Details that only matter if you have met the user</span>
+        <h2 class="h2">Small decisions, made the hard way.</h2>
+        <p class="body">A platform for informal workers fails on small things: a form that resets, a language that is not yours, a calendar you cannot keep. These are the ones already handled.</p>
+      </div>
+
+      <div class="mesh mesh--3 reveal">
+        <article class="cell">
+          <span class="cell__no">01</span>
+          <h3 class="h4">Availability stays coarse</h3>
+          <p>Days of the week plus morning, afternoon, evening. A real-time calendar is a promise a worker on a feature phone cannot keep, and a booking that fails on a stale calendar damages trust more than &ldquo;Mon&ndash;Sat, mornings&rdquo; ever would.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">02</span>
+          <h3 class="h4">No completion percentage for customers</h3>
+          <p>Profile completion is shown to the worker and the admin, never to a customer. A &ldquo;60% complete&rdquo; badge tells a customer &ldquo;this person is half-done&rdquo; and suppresses bookings &mdash; a growth mechanic that becomes a trust penalty.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">03</span>
+          <h3 class="h4">Typed locality is never overwritten</h3>
+          <p>Live location fills the locality field when it can, but once a worker starts editing it by hand the app stops correcting them. Small detail; it is the difference between a form that helps and a form that argues.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">04</span>
+          <h3 class="h4">Overlapping pins fan out</h3>
+          <p>Density is the goal, so the map has to survive it. Workers stacked on the same street separate on tap rather than hiding each other.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">05</span>
+          <h3 class="h4">Rate floors in two places</h3>
+          <p>&#8377;100 an hour and &#8377;300 a day, enforced in onboarding and again in the admin console, so nobody can be listed below the floor by either route.</p>
+        </article>
+        <article class="cell">
+          <span class="cell__no">06</span>
+          <h3 class="h4">Location failure is not a dead end</h3>
+          <p>Two-stage GPS with caching, and a manual locality search if permission is denied. Saying no to location tracking should not end the session.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--bone" id="security">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <span class="eyebrow">Data &amp; privacy</span>
+          <h2 class="h2" style="margin-top:1.5rem">The database is the security boundary, not the screen.</h2>
+          <p class="body" style="margin-top:1.5rem">Filtering the map to approved workers in the app is a convenience. The real protection has to live in the database, because anything the app can request, anyone holding the app&rsquo;s public key can request too.</p>
+          <p class="body">That principle drove a round of work to move every privileged operation server-side and to close off what the public key can read.</p>
+        </div>
+        <div class="reveal">
+          <dl class="deflist">
+            <div><dt>Phone numbers</dt><dd>Not readable by the client. A booking derives the worker&rsquo;s number server-side, for that booking only.</dd></div>
+            <div><dt>Government ID images</dt><dd>Held outside the public storage bucket. They exist for verification, not for browsing.</dd></div>
+            <div><dt>Registration &amp; bookings</dt><dd>Created through server-side functions rather than direct client writes.</dd></div>
+            <div><dt>Admin actions</dt><dd>Approve, reject, suspend and trust level all run server-side against a fixed allow-list, authenticated separately from the app.</dd></div>
+            <div><dt>Trust-critical decisions</dt><dd>Verification approvals, dispute outcomes, suspensions and anything touching money stay human-owned. AI assists the work; it does not make those calls.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="status">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Honest status</span>
+        <h2 class="h2">What is live, and what is deliberately not.</h2>
+        <p class="body body--wide">Never lying in the interface is a non-negotiable, and it applies to this page too. Some of what follows is deferred on purpose &mdash; building payments before bookings are proven would be a way of avoiding the harder question.</p>
+      </div>
+
+      <div class="rows reveal">
+        <article class="rows__item">
+          <span class="rows__no"><span class="tag tag--live">Live</span></span>
+          <div class="rows__body">
+            <h3 class="h3">Registration, verification, map, booking, admin</h3>
+            <p>Worker onboarding writes to Postgres, the admin console approves and suspends through guarded server-side functions, and only approved and verified workers reach the public map. This loop runs today, in English and Hindi.</p>
+          </div>
+        </article>
+        <article class="rows__item">
+          <span class="rows__no"><span class="tag tag--progress">By design</span></span>
+          <div class="rows__body">
+            <h3 class="h3">Cash payment, not in-app</h3>
+            <p>The app records the booking amount; the money changes hands in cash. Online payment is deliberately deferred until the booking flow is proven with real jobs. Overbuilding payments first would be building the machinery of a company that has not yet earned one.</p>
+          </div>
+        </article>
+        <article class="rows__item">
+          <span class="rows__no"><span class="tag tag--progress">By design</span></span>
+          <div class="rows__body">
+            <h3 class="h3">The OTP lives in the app, not in an SMS</h3>
+            <p>The code is generated and shown to the customer, and the worker enters it on site. SMS delivery costs money per message and adds nothing at pilot scale; it is a later upgrade, not a missing piece.</p>
+          </div>
+        </article>
+        <article class="rows__item">
+          <span class="rows__no"><span class="tag tag--bet">Deferred</span></span>
+          <div class="rows__body">
+            <h3 class="h3">Masked calling</h3>
+            <p>Call sessions are recorded and the provider integration points are in place, but no telephony provider is connected &mdash; so calls go direct. The button says &ldquo;Call worker&rdquo; rather than implying a masking layer that does not exist yet. When it does exist, the wording will change with it.</p>
+          </div>
+        </article>
+        <article class="rows__item">
+          <span class="rows__no"><span class="tag tag--bet">Next</span></span>
+          <div class="rows__body">
+            <h3 class="h3">Realtime booking alerts and iOS</h3>
+            <p>Workers currently see requests when they open the app. Realtime alerts are the highest-value remaining product gap. iOS is a build step, not a second codebase &mdash; the app is browser-first and Capacitor-friendly throughout.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink-2 cta">
+    <div class="wrap">
+      <div class="cta__inner reveal">
+        <div>
+          <span class="eyebrow">Technical partnership</span>
+          <h2 class="h2" style="margin-top:1.5rem">The deferred items are where a partner moves the needle fastest.</h2>
+        </div>
+        <div>
+          <p class="body">Telephony credentials, a payment integration, or engineering time on realtime alerts and reliability would move Seva from a working product to a pilot-ready one faster than anything else we could buy.</p>
+          <div class="btn-row" style="margin-top:2rem">
+            <a class="btn btn--accent btn--lg" href="partner.html">Talk to us <span class="arw" aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost btn--lg" href="traction.html">See the roadmap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Seva App — home"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-text"><span class="brand-name">Seva</span><span class="brand-tag">Kaam bhi, pehchaan bhi</span></span></a>
+        <p>A hyperlocal work platform for Varanasi. Verified local workers on a live map, worker-set prices, and an OTP that proves the job actually happened. Free for workers, always.</p>
+      </div>
+      <div>
+        <h4>Understand Seva</h4>
+        <ul class="foot-list">
+          <li><a href="about.html">Why it exists</a></li>
+          <li><a href="product.html">What is built</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="strategy.html">The model</a></li>
+          <li><a href="traction.html">Roadmap &amp; the ask</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key ideas</h4>
+        <ul class="foot-list">
+          <li><a href="how-it-works.html#flywheel">The trust flywheel</a></li>
+          <li><a href="how-it-works.html#safety">Trust &amp; safety</a></li>
+          <li><a href="strategy.html#pilot">The pilot loop</a></li>
+          <li><a href="about.html#rules">Our non-negotiables</a></li>
+          <li><a href="index.html#services">39 service categories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-list">
+          <li><a href="partner.html">Partnership enquiries</a></li>
+          <li><a href="mailto:anugrahjosiahgupta@gmail.com">anugrahjosiahgupta@gmail.com</a></li>
+          <li><a href="https://seva-site.vercel.app/">seva-site.vercel.app</a></li>
+          <li>Varanasi, Uttar Pradesh, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>&copy; <span data-year>2026</span> Seva App &mdash; all rights reserved.</span>
+      <span>Founded by A. Josiah Gupta &middot; Varanasi, India</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

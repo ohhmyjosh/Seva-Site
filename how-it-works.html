@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — Seva App</title>
+<meta name="description" content="The two journeys, the trust flywheel, the booking state machine, the OTP gate, the safety model and how pricing is set. Everything that has to be true for one job to happen.">
+<meta name="theme-color" content="#0a0b0d">
+<link rel="canonical" href="https://seva-site.vercel.app/how-it-works.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Seva App">
+<meta property="og:url" content="https://seva-site.vercel.app/how-it-works.html">
+<meta property="og:title" content="How it works — Seva App">
+<meta property="og:description" content="The two journeys, the trust flywheel, the booking state machine, the OTP gate, the safety model and how pricing is set. Everything that has to be true for one job to happen.">
+<meta property="og:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How it works — Seva App">
+<meta name="twitter:description" content="The two journeys, the trust flywheel, the booking state machine, the OTP gate, the safety model and how pricing is set. Everything that has to be true for one job to happen.">
+<meta name="twitter:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="brand" href="index.html" aria-label="Seva App — home"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-text"><span class="brand-name">Seva</span><span class="brand-tag">Kaam bhi, pehchaan bhi</span></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="product.html">Product</a>
+      <a href="how-it-works.html" aria-current="page">How it works</a>
+      <a href="strategy.html">Model</a>
+      <a href="traction.html">Roadmap</a>
+      <a class="btn btn--accent head-cta" href="partner.html">Start a conversation <span class="arw" aria-hidden="true">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="band page-head">
+    <div class="wrap">
+      <div class="page-head__inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Seva</a> <span aria-hidden="true">/</span> <span>How it works</span></nav>
+        <h1>Two people. One job.</h1>
+        <p class="lead">Everything on this page exists to make one moment trustworthy: the point where a household and a worker who have never met agree to a job. Seva is a two-sided market, and its hardest problem was never building features &mdash; it is getting both sides to show up in the same place at the same time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--bone" id="journeys">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">The two journeys</span>
+        <h2 class="h2">Two separate paths that must meet at a single point.</h2>
+        <p class="body">Both sides progress independently until they converge at the job. If either path breaks before that meeting point, no value is created &mdash; and no revenue is possible. Every safety and money system exists to make that convergence trustworthy.</p>
+      </div>
+
+      <div class="journeys reveal">
+        <div class="journey">
+          <h3 class="h4">The household</h3>
+          <p class="journey__sub">Wants reliable help nearby, fast, and someone they can trust in their home.</p>
+          <ol>
+            <li>Open Seva. The map is the home screen &mdash; no search form to fill in first.</li>
+            <li>Filter by service, or just look at who is <b>actually nearby</b> right now.</li>
+            <li>Tap a pin. Photo, rating, distance, rate, languages, availability, badges.</li>
+            <li>Book, or call the worker directly.</li>
+            <li>Share the <b>OTP</b> when they arrive. That starts the job.</li>
+            <li>Pay the agreed total in cash, then rate the work.</li>
+          </ol>
+        </div>
+        <div class="journey">
+          <h3 class="h4">The worker</h3>
+          <p class="journey__sub">Wants steady jobs, income, visibility, and to be treated as a person rather than a listing.</p>
+          <ol>
+            <li>Register free in under a minute. No fee, no subscription, ever.</li>
+            <li>Set <b>your own rate</b>, your hours, and how far you will travel.</li>
+            <li>Upload a photo and a government ID. Wait for admin review.</li>
+            <li>Once approved, you appear on the map to your whole neighbourhood.</li>
+            <li>Accept a request, arrive, enter the customer&rsquo;s OTP.</li>
+            <li>Get paid, keep the rating &mdash; and get found more easily next time.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="flywheel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The trust flywheel</span>
+        <h2 class="h2">Trust is the engine, and ratings are the only throttle.</h2>
+        <p class="body body--wide">Seva compounds through one loop. A verified worker goes live, a customer finds and books them, the job completes and is confirmed by OTP, the customer rates it, and a good rating pushes the worker higher on the map &mdash; which brings more bookings and more income.</p>
+      </div>
+
+      <div class="wheel reveal">
+        <div class="wheel__step"><b>01</b><strong>Verified &amp; live</strong><span>An admin approves the worker. Only then do they exist publicly.</span></div>
+        <div class="wheel__step"><b>02</b><strong>Found &amp; booked</strong><span>A nearby customer picks them from the map, price agreed first.</span></div>
+        <div class="wheel__step"><b>03</b><strong>Job done, OTP confirmed</strong><span>Proof the work actually happened, on site, with both people there.</span></div>
+        <div class="wheel__step"><b>04</b><strong>Rated</strong><span>Feedback attaches to the worker and to that specific job.</span></div>
+        <div class="wheel__step"><b>05</b><strong>Higher on the map</strong><span>Good work becomes more visible work. Money never buys this.</span></div>
+        <div class="wheel__step wheel__step--loop"><b>06</b><strong>The neighbours hear</strong><span>A good experience brings the customer back and pulls in the street.</span></div>
+      </div>
+
+      <div class="callout reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <span class="callout__label">Why this ring is the roadmap</span>
+        <p>Break any stage and the wheel stops turning. That is why work is prioritised by which stage is weakest rather than by which feature is most interesting &mdash; a beautiful new screen at stage four is worth nothing if stage one is jammed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink-2" id="safety">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Trust &amp; safety</span>
+        <h2 class="h2">Because workers enter homes, this is the most important system in Seva.</h2>
+        <p class="body">Safety begins with a hard rule: a worker is never visible to the public until an admin approves them. Signup is fast; visibility is earned through review.</p>
+      </div>
+
+      <div class="rows rows--lg">
+        <article class="rows__item reveal">
+          <span class="rows__no">01</span>
+          <div class="rows__body">
+            <h3 class="h3">Layers, not a single check</h3>
+            <p>Phone verification, an ID upload, a profile photo, admin approval, booking records, an OTP-confirmed completion, ratings, and a complaint path that can pause or remove a worker. No single one of these is sufficient; together they are a reasonable answer to &ldquo;who is this person at my door?&rdquo;</p>
+          </div>
+        </article>
+        <article class="rows__item reveal">
+          <span class="rows__no">02</span>
+          <div class="rows__body">
+            <h3 class="h3">Trust is not a one-time event</h3>
+            <p>Approval gets a worker onto the map. Ratings and complaints keep deciding whether they stay there. Better ratings, more completed jobs and reliable behaviour lift someone up; poor behaviour pushes them down or off entirely.</p>
+          </div>
+        </article>
+        <article class="rows__item reveal">
+          <span class="rows__no">03</span>
+          <div class="rows__body">
+            <h3 class="h3">The protection lives in the database</h3>
+            <p>Filtering the map in the app is a convenience, not a safeguard &mdash; anything the app can ask for, anyone with the app&rsquo;s public key can ask for. So worker phone numbers are not readable by the client, ID images sit outside any public bucket, and registration, bookings and admin actions all run through server-side functions.</p>
+          </div>
+        </article>
+        <article class="rows__item reveal">
+          <span class="rows__no">04</span>
+          <div class="rows__body">
+            <h3 class="h3">Humans make the trust decisions</h3>
+            <p>AI assists development, support triage and internal operations. Verification approvals, dispute outcomes, suspensions and anything touching money stay human-owned. Seva&rsquo;s defensibility is trust and governance &mdash; automating away the human judgement that creates it would be self-defeating.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="callout reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <span class="callout__label">What is still being designed</span>
+        <p>A formal dispute-resolution flow, an appeals process for suspended workers, refund handling, and an incident-response runbook do not exist as systems yet &mdash; today they are handled directly by the founder. They are named here rather than glossed over, because a partner deserves to know which parts of the safety story are architecture and which parts are still a person answering the phone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--bone" id="booking">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The booking</span>
+        <h2 class="h2">A job moves through states it cannot skip.</h2>
+        <p class="body body--wide">The customer books. The worker accepts, or the request is rejected. The worker does the job. An OTP confirms completion. Payment and rating follow. The transitions are explicit and checked &mdash; a booking cannot jump to &ldquo;done&rdquo; from anywhere.</p>
+      </div>
+
+      <div class="wheel reveal">
+        <div class="wheel__step"><b>&rarr;</b><strong>Requested</strong><span>The customer picks a worker and sends the request.</span></div>
+        <div class="wheel__step"><b>&rarr;</b><strong>Accepted</strong><span>The worker takes it, or declines and it ends there.</span></div>
+        <div class="wheel__step"><b>&rarr;</b><strong>In progress</strong><span>Started by OTP, on site, with both people present.</span></div>
+        <div class="wheel__step"><b>&rarr;</b><strong>Completed</strong><span>The trust checkpoint. Nothing marks done without the code.</span></div>
+        <div class="wheel__step"><b>&rarr;</b><strong>Paid</strong><span>Cash for the pilot. The amount is recorded against the booking.</span></div>
+        <div class="wheel__step wheel__step--loop"><b>&rarr;</b><strong>Rated</strong><span>Feedback is only possible on a job that actually finished.</span></div>
+      </div>
+
+      <div class="split" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <div class="reveal">
+          <h3 class="h3">Why the OTP matters more than it looks</h3>
+          <p class="body" style="margin-top:1.25rem">It is the cheapest possible proof that a job happened. Without it, a completed booking is just a row someone typed &mdash; and every rating, every reputation and every future commission calculation rests on rows that mean nothing.</p>
+          <p class="body">For the pilot the code lives inside the app rather than an SMS, because SMS costs money per message and proves nothing extra at this scale.</p>
+        </div>
+        <div class="reveal">
+          <h3 class="h3">And why payment is still cash</h3>
+          <p class="body" style="margin-top:1.25rem">Building an online payment stack before a single booking flow is proven would be an expensive way of avoiding the harder question. The app records the amount; the money moves the way it already moves in Varanasi.</p>
+          <p class="body">That has one serious consequence for the business model, and we would rather state it than bury it &mdash; see <a class="tlink" href="strategy.html#commission">the commission problem</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="pricing">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2 class="h2">Rate &times; hours, plus travel. That is the whole thing.</h2>
+        <p class="body">Complexity in pricing is almost always a transfer of value away from the person with less information. Three visible terms is the entire defence against that.</p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="formula reveal">
+          <span class="eyebrow eyebrow--plain">The formula</span>
+          <p class="formula__body">Total <em>=</em> rate <em>&times;</em> hours <em>+</em> travel</p>
+          <p class="body">The worker chooses whether they charge hourly or daily, sets the number, and sets their own travel charge. A floor of &#8377;100 an hour and &#8377;300 a day is enforced at onboarding and in the admin console. There is no ceiling.</p>
+        </div>
+        <div class="panel reveal">
+          <span class="eyebrow eyebrow--plain">A decision worth explaining</span>
+          <h3 class="h3">We considered algorithmic surge, and chose not to.</h3>
+          <p>A demand-driven price is sophisticated, and it silently moves price-setting from the worker to the platform &mdash; which breaks a non-negotiable. In a city where every customer talks to their neighbours, surge is also a reputational risk with no easy recovery.</p>
+          <p>The version we intend to build instead: when demand is high nearby, tell the worker so, and let them raise their rate if they want to. The algorithm advises. The worker decides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink-2 cta">
+    <div class="wrap">
+      <div class="cta__inner reveal">
+        <div>
+          <span class="eyebrow">Keep reading</span>
+          <h2 class="h2" style="margin-top:1.5rem">How Seva intends to make money.</h2>
+        </div>
+        <div>
+          <p class="body">The model page covers the commission, why the platform is free for workers, the honest problem with collecting on cash jobs, and why the real competitor is word-of-mouth rather than another app.</p>
+          <div class="btn-row" style="margin-top:2rem">
+            <a class="btn btn--accent btn--lg" href="strategy.html">The business model <span class="arw" aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost btn--lg" href="product.html">What is built</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Seva App — home"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-text"><span class="brand-name">Seva</span><span class="brand-tag">Kaam bhi, pehchaan bhi</span></span></a>
+        <p>A hyperlocal work platform for Varanasi. Verified local workers on a live map, worker-set prices, and an OTP that proves the job actually happened. Free for workers, always.</p>
+      </div>
+      <div>
+        <h4>Understand Seva</h4>
+        <ul class="foot-list">
+          <li><a href="about.html">Why it exists</a></li>
+          <li><a href="product.html">What is built</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="strategy.html">The model</a></li>
+          <li><a href="traction.html">Roadmap &amp; the ask</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key ideas</h4>
+        <ul class="foot-list">
+          <li><a href="how-it-works.html#flywheel">The trust flywheel</a></li>
+          <li><a href="how-it-works.html#safety">Trust &amp; safety</a></li>
+          <li><a href="strategy.html#pilot">The pilot loop</a></li>
+          <li><a href="about.html#rules">Our non-negotiables</a></li>
+          <li><a href="index.html#services">39 service categories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-list">
+          <li><a href="partner.html">Partnership enquiries</a></li>
+          <li><a href="mailto:anugrahjosiahgupta@gmail.com">anugrahjosiahgupta@gmail.com</a></li>
+          <li><a href="https://seva-site.vercel.app/">seva-site.vercel.app</a></li>
+          <li>Varanasi, Uttar Pradesh, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>&copy; <span data-year>2026</span> Seva App &mdash; all rights reserved.</span>
+      <span>Founded by A. Josiah Gupta &middot; Varanasi, India</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

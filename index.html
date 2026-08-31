@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seva App — Kaam bhi, pehchaan bhi</title>
+<meta name="description" content="Seva is a hyperlocal work platform for Varanasi. Verified local workers on a live map, prices set by the worker, and an OTP that proves the job happened. Free for workers, always.">
+<meta name="theme-color" content="#0a0b0d">
+<link rel="canonical" href="https://seva-site.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Seva App">
+<meta property="og:url" content="https://seva-site.vercel.app/">
+<meta property="og:title" content="Seva App — Kaam bhi, pehchaan bhi">
+<meta property="og:description" content="A hyperlocal work platform making informal work visible, trusted and fairly paid. Starting in Varanasi.">
+<meta property="og:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Seva App — Kaam bhi, pehchaan bhi">
+<meta name="twitter:description" content="A hyperlocal work platform making informal work visible, trusted and fairly paid. Starting in Varanasi.">
+<meta name="twitter:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="brand" href="index.html" aria-label="Seva App — home"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-text"><span class="brand-name">Seva</span><span class="brand-tag">Kaam bhi, pehchaan bhi</span></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="product.html">Product</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="strategy.html">Model</a>
+      <a href="traction.html">Roadmap</a>
+      <a class="btn btn--accent head-cta" href="partner.html">Start a conversation <span class="arw" aria-hidden="true">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="band hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-body">
+      <div class="hero-copy">
+        <span class="eyebrow">Hyperlocal work platform &mdash; Varanasi</span>
+        <h1>Kaam bhi.<br><span class="stroke">Pehchaan bhi.</span></h1>
+        <p class="lead"><span lang="hi" class="mark" style="font-family:var(--f-deva)">काम भी, पहचान भी।</span><br>Work, and the dignity of being seen.</p>
+        <p class="body">A skilled electrician two streets away and a family who needs one tonight have no reliable way to find each other. Seva is the layer between them: a live map of verified local workers, prices set by the worker, and an OTP that proves the job happened.</p>
+        <div class="btn-row">
+          <a class="btn btn--accent btn--lg" href="how-it-works.html">See how Seva works <span class="arw" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ghost btn--lg" href="partner.html">Partner with Seva</a>
+        </div>
+        <dl class="hero-meta">
+          <div>
+            <dt>Stage</dt>
+            <dd>Pre-launch pilot</dd>
+          </div>
+          <div>
+            <dt>Early traction</dt>
+            <dd>Electricians &amp; physiotherapy</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-stage stage3d" aria-hidden="true">
+        <div class="device-rig">
+          <span class="device-floor"></span>
+          <div class="device">
+            <span class="device__glare"></span>
+            <div class="device__screen">
+              <div class="screen is-active">
+                <div class="screen__bar"><span>Varanasi</span><b>12 live</b></div>
+                <div class="screen__map">
+                  <span class="pin" style="left:30%;top:26%"></span>
+                  <span class="pin" style="left:70%;top:44%"></span>
+                  <span class="pin" style="left:44%;top:68%"></span>
+                  <span class="pin pin--me" style="left:50%;top:50%"></span>
+                  <div class="pop">
+                    <span><strong>Ravi K.</strong><span>Electrician &middot; 1.8 km</span></span>
+                    <b>4.9</b>
+                  </div>
+                </div>
+                <div class="row"><span>Per hour</span><b>&#8377;250</b></div>
+                <div class="row"><span>Verification</span><b>Approved</b></div>
+                <div class="screen__cta">Book now</div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-card--a">
+            <b>Verified</b>
+            <strong>ID checked, admin approved</strong>
+            <span>Only then does a worker appear</span>
+          </div>
+          <div class="float-card float-card--b">
+            <b>Worker-set</b>
+            <strong>&#8377;250 per hour</strong>
+            <span>Their rate, their hours, their area</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span class="ticker__item">Electrician <i class="ticker__hi" lang="hi">इलेक्ट्रीशियन</i></span>
+        <span class="ticker__item">Plumber <i class="ticker__hi" lang="hi">प्लंबर</i></span>
+        <span class="ticker__item">Carpenter <i class="ticker__hi" lang="hi">बढ़ई</i></span>
+        <span class="ticker__item">Painter <i class="ticker__hi" lang="hi">पेंटर</i></span>
+        <span class="ticker__item">Labour <i class="ticker__hi" lang="hi">मज़दूर</i></span>
+        <span class="ticker__item">Mason <i class="ticker__hi" lang="hi">राजमिस्त्री</i></span>
+        <span class="ticker__item">Cook <i class="ticker__hi" lang="hi">रसोइया</i></span>
+        <span class="ticker__item">Maid घरेलू <i class="ticker__hi" lang="hi">सहायिका</i></span>
+        <span class="ticker__item">Driver <i class="ticker__hi" lang="hi">ड्राइवर</i></span>
+        <span class="ticker__item">Tutor <i class="ticker__hi" lang="hi">ट्यूटर</i></span>
+        <span class="ticker__item">Elder care बुज़ुर्गों की <i class="ticker__hi" lang="hi">देखभाल</i></span>
+        <span class="ticker__item">AC repair एसी <i class="ticker__hi" lang="hi">रिपेयर</i></span>
+        <span class="ticker__item">Mehendi artist मेहंदी <i class="ticker__hi" lang="hi">आर्टिस्ट</i></span>
+        <span class="ticker__item">Physiotherapist <i class="ticker__hi" lang="hi">फिजियोथेरेपिस्ट</i></span>
+        <span class="ticker__item">Pest control कीट <i class="ticker__hi" lang="hi">नियंत्रण</i></span>
+        <span class="ticker__item">Tour guide टूर <i class="ticker__hi" lang="hi">गाइड</i></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IN ONE PARAGRAPH ================= -->
+  <section class="band band--tight" id="summary">
+    <div class="wrap">
+      <div class="split reveal">
+        <div>
+          <span class="eyebrow">In one paragraph</span>
+          <p class="pull" style="margin-top:1.5rem">Seva makes local, informal work visible, trusted, and fairly paid.</p>
+        </div>
+        <div>
+          <p class="body">A customer opens a map and sees verified workers nearby &mdash; a maid, an electrician, a physiotherapist, a labourer &mdash; and books or calls them directly. A worker registers free in under a minute, is verified by an admin, and becomes discoverable to their whole neighbourhood instead of the handful of people who already have their number.</p>
+          <p class="body">Seva charges workers nothing. No registration fee, no subscription, and no way to pay for a higher position on the map. Visibility is earned through ratings and reliability. The intended revenue is a small commission on completed jobs &mdash; value captured only when value is created.</p>
+        </div>
+      </div>
+
+      <dl class="facts reveal" style="margin-top:clamp(2rem,4vw,3rem)">
+        <div><dt>City</dt><dd>Varanasi</dd></div>
+        <div><dt>Categories</dt><dd>39, bilingual</dd></div>
+        <div><dt>Localities mapped</dt><dd>15</dd></div>
+        <div><dt>Hiring languages</dt><dd>9</dd></div>
+        <div><dt>Cost to workers</dt><dd>&#8377;0, always</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= THE GAP ================= -->
+  <section class="band band--bone" id="gap">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">The gap</span>
+        <h2 class="h2">Skills are not the problem. Access is.</h2>
+        <p class="body">India&rsquo;s informal workforce is enormous and largely invisible to the tools that organise the formal economy. A daily-wage labourer waits at a chowk hoping someone hires him. A skilled maid&rsquo;s income is capped by how many neighbours happen to have her number.</p>
+      </div>
+
+      <div class="mesh mesh--4">
+        <article class="cell reveal">
+          <span class="cell__no">01</span>
+          <h3 class="h4">Income that never settles</h3>
+          <p>Irregular work means irregular everything else &mdash; rent, school fees, medicine, the ability to plan a month ahead.</p>
+        </article>
+        <article class="cell reveal">
+          <span class="cell__no">02</span>
+          <h3 class="h4">A workforce that is invisible</h3>
+          <p>Skilled people are unseen not because they lack ability, but because nothing structured connects them to the demand next door.</p>
+        </article>
+        <article class="cell reveal">
+          <span class="cell__no">03</span>
+          <h3 class="h4">Trust bought on hearsay</h3>
+          <p>Households carry real anxiety about who they let into their home. Word-of-mouth gives no way to judge a stranger.</p>
+        </article>
+        <article class="cell reveal">
+          <span class="cell__no">04</span>
+          <h3 class="h4">No answer when the usual person is busy</h3>
+          <p>Word-of-mouth works right up until your electrician is on another job. Then there is no second option and no way to compare.</p>
+        </article>
+      </div>
+
+      <div class="callout reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <span class="callout__label">Why it matters</span>
+        <p>Both problems are the same missing thing: a trusted, structured way to see and choose local help. Solving it is not only a business opportunity. Done well, it raises the floor of dignity and income for people the digital economy usually skips.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT SEVA IS ================= -->
+  <section class="band" id="solution">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What Seva is</span>
+        <h2 class="h2">Map-first, not form-first.</h2>
+        <p class="body body--wide">The core question is spatial &mdash; <em class="serif-em">who can help me, near me, now?</em> &mdash; so the default screen is a live map of nearby workers. Everything else is secondary to that map.</p>
+      </div>
+
+      <div class="rows rows--lg">
+        <article class="rows__item reveal">
+          <span class="rows__no">01</span>
+          <div class="rows__body">
+            <h3 class="h3">Find the people who are actually near you</h3>
+            <p>Customers open a live map, not a directory. Only workers who are both verified and admin-approved appear on it. Location comes from the device, with a locality fallback so a weak GPS fix never hides someone who should be findable.</p>
+          </div>
+        </article>
+        <article class="rows__item reveal">
+          <span class="rows__no">02</span>
+          <div class="rows__body">
+            <h3 class="h3">Judge a stranger before you let them in</h3>
+            <p>The worker card is the single most important screen in the app, because it is where a stranger becomes a candidate. Photo, service, rating, distance, locality, rate, availability, languages spoken, verification badges, and two actions: book, or call.</p>
+          </div>
+        </article>
+        <article class="rows__item reveal">
+          <span class="rows__no">03</span>
+          <div class="rows__body">
+            <h3 class="h3">Turn one good job into the next one</h3>
+            <p>A completed, OTP-confirmed job leaves a record. Records become a rating, and a good rating lifts a worker up the map. That is the only currency of visibility on Seva &mdash; money never buys rank.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FLYWHEEL ================= -->
+  <section class="band band--bone" id="flywheel">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">The engine</span>
+        <h2 class="h2">One loop, and every decision sits somewhere on it.</h2>
+        <p class="body">Seva compounds through a single ring. Break any stage and the wheel stops turning &mdash; which is why the roadmap is ordered by which stage is weakest, not by which feature is most exciting.</p>
+      </div>
+
+      <div class="wheel reveal">
+        <div class="wheel__step"><b>01</b><strong>Verified worker goes live</strong><span>An admin approves them, and they appear on the public map.</span></div>
+        <div class="wheel__step"><b>02</b><strong>Customer finds and books</strong><span>Nearby, rated, with a price agreed before anyone commits.</span></div>
+        <div class="wheel__step"><b>03</b><strong>The job is done</strong><span>An OTP confirms it actually happened, on site, with both people present.</span></div>
+        <div class="wheel__step"><b>04</b><strong>The customer rates it</strong><span>Feedback attaches to the worker, not to the platform.</span></div>
+        <div class="wheel__step"><b>05</b><strong>A good rating lifts them</strong><span>Higher on the map means more bookings, which means more income.</span></div>
+        <div class="wheel__step wheel__step--loop"><b>06</b><strong>And it comes back round</strong><span>A good experience brings the customer back and pulls in their neighbours.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT STORY ================= -->
+  <section class="band band--ink-2" id="experience">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Inside the app</span>
+        <h2 class="h2">Nine screens, from first open to a rated job.</h2>
+        <p class="body">The whole loop is built and running: onboarding, verification, the live map, booking, the OTP gate and rating. Scroll to walk through it.</p>
+      </div>
+
+      <div class="story">
+        <div class="story__stage">
+          <div class="device-rig">
+            <span class="device-floor" aria-hidden="true"></span>
+            <div class="device">
+            <span class="device__glare" aria-hidden="true"></span>
+            <div class="device__screen">
+
+              <div class="screen is-active" data-screen="1">
+                <div class="screen__splash">
+                  <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+                    <path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+                  </svg>
+                  <strong>Seva</strong>
+                  <span>Kaam bhi, pehchaan bhi</span>
+                </div>
+              </div>
+
+              <div class="screen" data-screen="2">
+                <div class="screen__bar"><span>Welcome</span><b>EN / हिं</b></div>
+                <div class="tile tile--active">
+                  <strong>I need help</strong>
+                  <span>Book a verified worker nearby</span>
+                </div>
+                <div class="tile">
+                  <strong>I am looking for work</strong>
+                  <span>Register free and be found</span>
+                </div>
+                <p>One app, two sides. The language toggle carries through every screen.</p>
+              </div>
+
+              <div class="screen" data-screen="3">
+                <div class="screen__bar"><span>Register</span><b>Skilled</b></div>
+                <div class="row"><span>Name</span><b>Ravi Kumar</b></div>
+                <div class="row"><span>Service</span><b>Electrician</b></div>
+                <div class="row"><span>Locality</span><b>Lanka</b></div>
+                <div class="row"><span>Languages</span><b>Hindi, Bhojpuri</b></div>
+                <div class="row"><span>Per hour</span><b>&#8377;250</b></div>
+                <div class="row"><span>Photo + ID</span><b>Uploaded</b></div>
+                <p>Free, and free forever. No subscription, no listing fee.</p>
+                <div class="screen__cta">Submit for review</div>
+              </div>
+
+              <div class="screen" data-screen="4">
+                <div class="screen__bar"><span>Choose a service</span><b>39</b></div>
+                <div class="chipset">
+                  <span class="chip chip--on">Electrician</span>
+                  <span class="chip">Plumber</span>
+                  <span class="chip">Maid</span>
+                  <span class="chip">Labour</span>
+                  <span class="chip">Physio</span>
+                  <span class="chip">Elder care</span>
+                </div>
+                <p>Every category carries a Hindi label, and &ldquo;More&rdquo; accepts free text for anything not listed.</p>
+              </div>
+
+              <div class="screen" data-screen="5">
+                <div class="screen__bar"><span>Nearby</span><b>12 live</b></div>
+                <div class="screen__map">
+                  <span class="pin" style="left:32%;top:30%"></span>
+                  <span class="pin" style="left:68%;top:46%"></span>
+                  <span class="pin" style="left:46%;top:66%"></span>
+                  <span class="pin pin--me" style="left:50%;top:50%"></span>
+                  <div class="pop">
+                    <span><strong>Ravi K.</strong><span>Electrician &middot; 1.8 km</span></span>
+                    <b>4.9</b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="screen" data-screen="6">
+                <div class="screen__bar"><span>Profile</span><b>Verified</b></div>
+                <div class="tile">
+                  <strong>Ravi Kumar</strong>
+                  <span>Electrician &middot; 6 years &middot; Lanka</span>
+                </div>
+                <div class="row"><span>Per hour</span><b>&#8377;250</b></div>
+                <div class="row"><span>Speaks</span><b>Hindi, Bhojpuri</b></div>
+                <div class="row"><span>Available</span><b>Mon&ndash;Sat, mornings</b></div>
+                <div class="row"><span>Jobs completed</span><b>34</b></div>
+                <div class="row"><span>Rating</span><b>4.9 &#9733;</b></div>
+                <div class="screen__cta">Book now</div>
+                <div class="screen__cta screen__cta--soft">Call worker</div>
+              </div>
+
+              <div class="screen" data-screen="7">
+                <div class="screen__bar"><span>Job start</span><b>OTP</b></div>
+                <span class="badge badge--ok">Accepted</span>
+                <div class="tile">
+                  <strong>Share 4 8 2 1</strong>
+                  <span>Ravi enters this code to start the job</span>
+                </div>
+                <div class="row"><span>Service</span><b>Electrician</b></div>
+                <div class="row"><span>Today</span><b>4:30 PM</b></div>
+                <p>A job cannot be completed without it. That is what makes the record mean something.</p>
+              </div>
+
+              <div class="screen" data-screen="8">
+                <div class="screen__bar"><span>Total</span><b>&#8377;590</b></div>
+                <div class="row"><span>Rate</span><b>&#8377;250 / hr</b></div>
+                <div class="row"><span>Hours</span><b>2</b></div>
+                <div class="row"><span>Travel</span><b>&#8377;90</b></div>
+                <div class="row"><span>Set by</span><b>The worker</b></div>
+                <p>Rate &times; hours, plus travel. Nothing the platform decides, nothing hidden.</p>
+                <div class="screen__cta">Confirm &amp; pay</div>
+              </div>
+
+              <div class="screen" data-screen="9">
+                <div class="screen__bar"><span>Complete</span><b>Job #1042</b></div>
+                <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <h4 class="h4" style="color:var(--on-ink)">How was the work?</h4>
+                <p>Ratings attach to the worker and decide where they sit on the map. Money never does.</p>
+                <div class="screen__cta">Submit</div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story__steps">
+          <article class="step is-active" data-step="1">
+            <span class="step__no">01</span>
+            <div>
+              <h3 class="h3">Open</h3>
+              <p>The mark on the splash screen is a portico — four pillars and a roof. Shelter built on structure. That is the promise the rest of the app has to keep.</p>
+            </div>
+          </article>
+          <article class="step" data-step="2">
+            <span class="step__no">02</span>
+            <div>
+              <h3 class="h3">Choose your side</h3>
+              <p>One app, two people: the household that needs help, and the person who does the work. The English / <span lang="hi" style="font-family:var(--f-deva)">हिन्दी</span> toggle sits here and carries through everything after it.</p>
+            </div>
+          </article>
+          <article class="step" data-step="3">
+            <span class="step__no">03</span>
+            <div>
+              <h3 class="h3">Register in minutes</h3>
+              <p>Name, phone, category, locality, a photo and a government ID. What a worker is asked for depends on their trade — a maid is never asked for a graduation year, and an electrician cannot skip employment history.</p>
+            </div>
+          </article>
+          <article class="step" data-step="4">
+            <span class="step__no">04</span>
+            <div>
+              <h3 class="h3">Pick a service</h3>
+              <p>Thirty-nine categories, each with a Hindi label, plus free text for work that does not fit a box. Local demand does not arrive in tidy taxonomies.</p>
+            </div>
+          </article>
+          <article class="step" data-step="5">
+            <span class="step__no">05</span>
+            <div>
+              <h3 class="h3">See who is nearby</h3>
+              <p>A live map, not a list. Only workers who are verified <em class="serif-em">and</em> admin-approved are placed on it — approval is what makes someone visible, and it can be withdrawn.</p>
+            </div>
+          </article>
+          <article class="step" data-step="6">
+            <span class="step__no">06</span>
+            <div>
+              <h3 class="h3">Check the profile, then book</h3>
+              <p>Rates, distance, languages spoken, availability, rating and verification badges, all before the booking. Overlapping pins fan out so a dense street stays tappable.</p>
+            </div>
+          </article>
+          <article class="step" data-step="7">
+            <span class="step__no">07</span>
+            <div>
+              <h3 class="h3">An OTP starts the job</h3>
+              <p>The customer holds a code; the worker enters it on arrival. A job cannot be marked done without it, which is what makes a completed booking mean something.</p>
+            </div>
+          </article>
+          <article class="step" data-step="8">
+            <span class="step__no">08</span>
+            <div>
+              <h3 class="h3">Agree the price up front</h3>
+              <p>The worker sets their own rate and travel charge. The total is their rate times the hours, plus travel — arithmetic a worker can say out loud and a customer can check.</p>
+            </div>
+          </article>
+          <article class="step" data-step="9">
+            <span class="step__no">09</span>
+            <div>
+              <h3 class="h3">Rate, and it compounds</h3>
+              <p>The rating attaches to the worker and lifts them up the map. Thirty completed jobs become the thing an informal worker has never been able to carry between customers: a record.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="btn-row reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
+        <a class="tlink" href="product.html">Everything that is built, in detail <span class="arw" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="band band--bone" id="services">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Coverage</span>
+        <h2 class="h2">Thirty-nine kinds of work. Every one of them bilingual.</h2>
+        <p class="body">Not aspirational categories on a slide &mdash; this is the live taxonomy inside the product, each with its own Hindi label, colour and icon. Electricians and physiotherapy are where the first real bookings came from.</p>
+      </div>
+
+      <div class="services reveal">
+        <div class="service"><strong>Electrician</strong><span lang="hi">इलेक्ट्रीशियन</span></div>
+        <div class="service"><strong>Plumber</strong><span lang="hi">प्लंबर</span></div>
+        <div class="service"><strong>Mechanic</strong><span lang="hi">मैकेनिक</span></div>
+        <div class="service"><strong>Carpenter</strong><span lang="hi">बढ़ई</span></div>
+        <div class="service"><strong>Painter</strong><span lang="hi">पेंटर</span></div>
+        <div class="service"><strong>Cleaner</strong><span lang="hi">सफ़ाई कर्मचारी</span></div>
+        <div class="service"><strong>Maid</strong><span lang="hi">घरेलू सहायिका</span></div>
+        <div class="service"><strong>Cook</strong><span lang="hi">रसोइया</span></div>
+        <div class="service"><strong>Babysitter</strong><span lang="hi">बच्चों की देखभाल</span></div>
+        <div class="service"><strong>Labour</strong><span lang="hi">मज़दूर</span></div>
+        <div class="service"><strong>Driver</strong><span lang="hi">ड्राइवर</span></div>
+        <div class="service"><strong>Tutor</strong><span lang="hi">ट्यूटर</span></div>
+        <div class="service"><strong>Sports coach</strong><span lang="hi">स्पोर्ट्स कोच</span></div>
+        <div class="service"><strong>Massage</strong><span lang="hi">मालिश</span></div>
+        <div class="service"><strong>Physiotherapist</strong><span lang="hi">फिजियोथेरेपिस्ट</span></div>
+        <div class="service"><strong>Counsellor</strong><span lang="hi">काउंसलर</span></div>
+        <div class="service"><strong>Therapist</strong><span lang="hi">थेरेपिस्ट</span></div>
+        <div class="service"><strong>Home salon</strong><span lang="hi">होम सैलून</span></div>
+        <div class="service"><strong>DJ</strong><span lang="hi">डीजे</span></div>
+        <div class="service"><strong>Tour guide</strong><span lang="hi">टूर गाइड</span></div>
+        <div class="service"><strong>Elder care</strong><span lang="hi">बुज़ुर्गों की देखभाल</span></div>
+        <div class="service"><strong>Washing machine repair</strong><span lang="hi">वॉशिंग मशीन रिपेयर</span></div>
+        <div class="service"><strong>TV repair</strong><span lang="hi">टीवी रिपेयर</span></div>
+        <div class="service"><strong>AC repair</strong><span lang="hi">एसी रिपेयर</span></div>
+        <div class="service"><strong>Mobile repair</strong><span lang="hi">मोबाइल रिपेयर</span></div>
+        <div class="service"><strong>General helper</strong><span lang="hi">सामान्य हेल्पर</span></div>
+        <div class="service"><strong>Builder</strong><span lang="hi">बिल्डर</span></div>
+        <div class="service"><strong>Mason</strong><span lang="hi">राजमिस्त्री</span></div>
+        <div class="service"><strong>Loader / unloader</strong><span lang="hi">लोडर / अनलोडर</span></div>
+        <div class="service"><strong>Pest control</strong><span lang="hi">कीट नियंत्रण</span></div>
+        <div class="service"><strong>Water tank cleaner</strong><span lang="hi">पानी टंकी सफ़ाई</span></div>
+        <div class="service"><strong>Computer repair</strong><span lang="hi">कंप्यूटर रिपेयर</span></div>
+        <div class="service"><strong>Female beautician</strong><span lang="hi">महिला ब्यूटीशियन</span></div>
+        <div class="service"><strong>Male barber</strong><span lang="hi">पुरुष नाई</span></div>
+        <div class="service"><strong>Makeup artist</strong><span lang="hi">मेकअप आर्टिस्ट</span></div>
+        <div class="service"><strong>Hair stylist</strong><span lang="hi">हेयर स्टाइलिस्ट</span></div>
+        <div class="service"><strong>Mehendi artist</strong><span lang="hi">मेहंदी आर्टिस्ट</span></div>
+        <div class="service"><strong>Home services</strong><span lang="hi">होम सर्विसेज़</span></div>
+        <div class="service"><strong>Anything else</strong><span lang="hi">अन्य</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST ================= -->
+  <section class="band" id="trust">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <span class="eyebrow">Trust &amp; safety</span>
+          <h2 class="h2" style="margin-top:1.5rem">Workers enter homes. Trust cannot be an afterthought.</h2>
+          <p class="body" style="margin-top:1.5rem">Signup is fast, but visibility is earned. A worker is never shown to the public until an admin has reviewed and approved them &mdash; and approval can be withdrawn the moment it needs to be.</p>
+          <div class="btn-row" style="margin-top:2rem">
+            <a class="tlink" href="how-it-works.html#safety">How the safety model works <span class="arw" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+
+        <dl class="deflist reveal">
+          <div>
+            <dt>Identity on file</dt>
+            <dd>A profile photo and a government ID, held privately. ID images are never served from a public bucket.</dd>
+          </div>
+          <div>
+            <dt>Human approval</dt>
+            <dd>Every worker lands as <em class="serif-em">pending</em>. A person reads the whole application before anyone can see them.</dd>
+          </div>
+          <div>
+            <dt>Visibility as a gate</dt>
+            <dd>Only approved <em class="serif-em">and</em> verified workers reach the public map. Suspension removes someone immediately.</dd>
+          </div>
+          <div>
+            <dt>OTP at job start</dt>
+            <dd>Work begins when the customer&rsquo;s code is entered on site. A job cannot be completed any other way.</dd>
+          </div>
+          <div>
+            <dt>Phone numbers stay private</dt>
+            <dd>Worker numbers are not readable by the app&rsquo;s public key. A booking derives the number server-side, for that booking only.</dd>
+          </div>
+          <div>
+            <dt>Reputation decides visibility</dt>
+            <dd>Ratings, completed jobs and complaints move a worker up or off the map. Payment never does.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAIR PAY ================= -->
+  <section class="band band--bone" id="payment">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Fair pay</span>
+        <h2 class="h2">The worker sets the price. Not an algorithm.</h2>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="formula reveal">
+          <span class="eyebrow eyebrow--plain">The whole formula</span>
+          <p class="formula__body">Total <em>=</em> the worker&rsquo;s rate <em>&times;</em> hours worked <em>+</em> their travel charge</p>
+          <p class="body">Three terms. A worker can explain it out loud, a customer can check it, and a partner can audit it. Rates have a floor &mdash; &#8377;100 an hour, &#8377;300 a day &mdash; so nobody can be listed below a living rate, but the ceiling is entirely theirs.</p>
+        </div>
+        <div class="panel reveal">
+          <span class="eyebrow eyebrow--plain">Deliberately not surge</span>
+          <h3 class="h3">An algorithm that sets prices takes control away from the worker.</h3>
+          <p>Surge pricing is clever, and it quietly moves price-setting from the person doing the work to the platform. In a city where every customer talks to their neighbours, that is also commercially dangerous. Where demand is high, Seva&rsquo;s job is to tell the worker so &mdash; and let them decide.</p>
+          <a class="btn" href="how-it-works.html#pricing">Read the reasoning <span class="arw" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HORIZONS ================= -->
+  <section class="band" id="horizons">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <span class="eyebrow">Where this goes</span>
+        <h2 class="h2">One year, three years, ten years.</h2>
+        <p class="body">Each horizon is written as a condition to meet, not a date to hit. A date only tells you when we stopped; a condition tells you whether it worked.</p>
+      </div>
+
+      <div class="horizons reveal">
+        <article class="horizon">
+          <span class="tag tag--progress">In progress</span>
+          <span class="horizon__when">~1 year</span>
+          <p>A dense pocket of Varanasi where real customers repeatedly book verified workers. Five to ten completed bookings a day, and proven reliability in at least a few categories.</p>
+        </article>
+        <article class="horizon">
+          <span class="tag tag--bet">Still a bet</span>
+          <span class="horizon__when">~3 years</span>
+          <p>Varanasi-wide liquidity across most core categories, a commission mechanism that actually collects, and a playbook repeatable enough to run in a second city.</p>
+        </article>
+        <article class="horizon">
+          <span class="tag tag--bet">The vision</span>
+          <span class="horizon__when">~10 years</span>
+          <p>A trusted local-work platform across many Indian cities, where any skilled person can be visible and earn with dignity &mdash; and anyone who needs help can find it in seconds.</p>
+        </article>
+      </div>
+
+      <div class="btn-row reveal" style="margin-top:clamp(2rem,4vw,3rem)">
+        <a class="tlink" href="traction.html">The full roadmap, and what we are asking for <span class="arw" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--ink-2 cta">
+    <div class="wrap">
+      <div class="cta__inner reveal">
+        <div>
+          <span class="eyebrow">Partner with Seva</span>
+          <h2 class="h2" style="margin-top:1.5rem">Let&rsquo;s bridge the gap together.</h2>
+        </div>
+        <div>
+          <p class="body">We are talking to CSR teams, sponsors, NGOs, institutions and local businesses about the Varanasi pilot &mdash; worker onboarding, awareness, and the operational work that makes a first neighbourhood succeed.</p>
+          <div class="btn-row" style="margin-top:2rem">
+            <a class="btn btn--accent btn--lg" href="partner.html">Start a conversation <span class="arw" aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost btn--lg" href="traction.html">See where we are</a>
+          </div>
+        </div>
+      </div>
+      <p class="wordmark" aria-hidden="true">SEVA</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Seva App — home"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 20 24 8l18 12z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 24v13M20.3 24v13M27.7 24v13M35 24v13M8 41h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="brand-text"><span class="brand-name">Seva</span><span class="brand-tag">Kaam bhi, pehchaan bhi</span></span></a>
+        <p>A hyperlocal work platform for Varanasi. Verified local workers on a live map, worker-set prices, and an OTP that proves the job actually happened. Free for workers, always.</p>
+      </div>
+      <div>
+        <h4>Understand Seva</h4>
+        <ul class="foot-list">
+          <li><a href="about.html">Why it exists</a></li>
+          <li><a href="product.html">What is built</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="strategy.html">The model</a></li>
+          <li><a href="traction.html">Roadmap &amp; the ask</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key ideas</h4>
+        <ul class="foot-list">
+          <li><a href="how-it-works.html#flywheel">The trust flywheel</a></li>
+          <li><a href="how-it-works.html#safety">Trust &amp; safety</a></li>
+          <li><a href="strategy.html#pilot">The pilot loop</a></li>
+          <li><a href="about.html#rules">Our non-negotiables</a></li>
+          <li><a href="index.html#services">39 service categories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-list">
+          <li><a href="partner.html">Partnership enquiries</a></li>
+          <li><a href="mailto:anugrahjosiahgupta@gmail.com">anugrahjosiahgupta@gmail.com</a></li>
+          <li><a href="https://seva-site.vercel.app/">seva-site.vercel.app</a></li>
+          <li>Varanasi, Uttar Pradesh, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>&copy; <span data-year>2026</span> Seva App &mdash; all rights reserved.</span>
+      <span>Founded by A. Josiah Gupta &middot; Varanasi, India</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
