@@ -661,7 +661,7 @@ p {
 .hero {
   position: relative;
   min-height: min(96svh, 54rem);
-  padding-top: calc(var(--head-h) + clamp(2.5rem, 5vw, 4.75rem));
+  padding-top: calc(var(--head-h) + clamp(1.5rem, 5vw, 4.75rem));
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
@@ -740,7 +740,7 @@ p {
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 clamp(1.5rem, 3vw, 2.75rem);
+  gap: 1.15rem clamp(1.5rem, 3vw, 2.75rem);
   margin: 0;
   padding-top: 1.35rem;
   border-top: 1px solid var(--line-on-ink);
@@ -2419,11 +2419,38 @@ p {
    -------------------------------------------------------------------------- */
 
 @media (max-width: 1240px) {
-  .float-card {
+  /* Below the widest layout there is no room for the glass cards to float
+     clear of the copy, so the hero rig stops being a 3D composition and
+     becomes an honest stack: the device, then the two claims beneath it. */
+  .hero-stage .device-rig {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: 1rem;
+    width: min(100%, 28rem);
+    transform: none;
+    animation: none;
+  }
+
+  .hero-stage .device {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 14.5rem);
+  }
+
+  /* The contact shadow only reads under a tilted slab. Flat, it just smudges
+     the cards that now sit below the device. */
+  .hero-stage .device-floor {
     display: none;
   }
 
-  .device-rig {
+  .hero-stage .float-card {
+    position: static;
+    width: auto;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .story__stage .device-rig {
     transform: rotateY(-13deg) rotateX(5deg);
   }
 }
@@ -2536,10 +2563,36 @@ p {
     margin-bottom: calc(17rem * 19 / 9 * -0.4);
   }
 
-  /* The hero device lives on in the product story below; repeating it here
-     would only push the hero copy off a phone screen. */
+  /* The device is the clearest thing on the page about what Seva actually is,
+     so on a phone it keeps its place. Stacked at the end of the copy it landed
+     a full screen below the fold, so the hero is flattened into one column and
+     the device is lifted above the buttons and the fact row — it now sits in
+     the first screenful, with the CTA directly under it. */
+  .hero-body {
+    display: flex;
+    flex-direction: column;
+    /* The two-column layout centred its tracks; as a single column that would
+       shrink-wrap every child to its own text width. */
+    align-items: stretch;
+    gap: clamp(1.15rem, 3vw, 1.6rem);
+    padding-bottom: clamp(1.75rem, 5vw, 3rem);
+  }
+
+  .hero-copy {
+    display: contents;
+  }
+
   .hero-stage {
-    display: none;
+    order: 2;
+    padding-block: clamp(0.5rem, 2.5vw, 1.25rem);
+  }
+
+  .hero .btn-row {
+    order: 3;
+  }
+
+  .hero-meta {
+    order: 4;
   }
 
   .story__steps {
@@ -2577,6 +2630,18 @@ p {
   .btn-row .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Keep the whole device on screen without shrinking the UI inside it past
+     the point where the labels stay legible. */
+  .hero-stage .device {
+    width: min(100%, 13.25rem);
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem 1.25rem;
   }
 
   .stats {
