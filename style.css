@@ -321,6 +321,9 @@ p {
 .body {
   color: var(--fg-dim);
   max-width: var(--measure);
+  /* Keeps a one-word last line from stranding at the foot of a paragraph.
+     Ignored where unsupported, so it degrades to ordinary wrapping. */
+  text-wrap: pretty;
 }
 
 .body + .body {
@@ -2788,11 +2791,14 @@ p {
 
 .figure__title {
   font-family: var(--f-display);
-  font-size: var(--fs-h4);
+  font-size: clamp(1.12rem, 1.5vw, 1.42rem);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
   color: var(--fg);
   margin: 0;
+  flex: 1 1 20rem;
+  text-wrap: balance;
 }
 
 .figure__stage {
@@ -2809,11 +2815,18 @@ p {
 
 .figure__cap {
   padding: 0 clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 1.9rem);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.02rem;
+  line-height: 1.66;
   color: var(--fg-dim);
-  max-width: 52rem;
+  max-width: 62rem;
   margin: 0;
+  text-wrap: pretty;
+}
+
+/* The measurable claim inside a caption is the whole point of the caption. */
+.figure__cap strong {
+  color: var(--fg);
+  font-weight: 600;
 }
 
 /* Diagram primitives. Everything resolves through the band's own tokens, so a
@@ -2925,10 +2938,11 @@ p {
 }
 
 .layer__what {
-  font-size: 0.94rem;
-  line-height: 1.55;
+  font-size: 0.99rem;
+  line-height: 1.6;
   color: var(--fg-dim);
   margin: 0;
+  text-wrap: pretty;
 }
 
 .layer__state {
@@ -2943,7 +2957,6 @@ p {
     grid-column: 2 / -1;
   }
 }
-
 /* --------------------------------------------------------------------------
    23. Roadmap — phases, what ships, and the condition that ends each one
    -------------------------------------------------------------------------- */
@@ -2959,100 +2972,122 @@ p {
 .phase {
   background: var(--bg);
   display: grid;
-  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
-  gap: clamp(1.1rem, 3vw, 3rem);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 3.25rem);
+  padding: clamp(1.75rem, 3.2vw, 2.75rem);
 }
 
 .phase--now {
   background: var(--bg-2);
 }
 
+/* The side rail doubles as the track: a hairline runs down every phase but the
+   last, so the five read as one sequence rather than five separate cards. */
 .phase__side {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.75rem;
   align-content: start;
+  position: relative;
 }
 
 .phase__no {
   font-family: var(--f-display);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2.6rem, 4.6vw, 4rem);
   font-weight: 800;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
   color: var(--line-strong);
+  font-variant-numeric: tabular-nums;
 }
 
 .phase--now .phase__no {
   color: var(--accent-ctx);
 }
 
-.phase__name {
-  font-family: var(--f-display);
-  font-size: var(--fs-h3);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: var(--fg);
-  margin: 0;
-}
-
 .phase__when {
   font-family: var(--f-display);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-dim);
 }
 
+.phase--now .phase__when {
+  color: var(--accent-ctx);
+}
+
+.phase__name {
+  font-family: var(--f-display);
+  font-size: clamp(1.28rem, 1.85vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: var(--fg);
+  margin: 0;
+  text-wrap: balance;
+}
+
 .phase__body {
   display: grid;
-  gap: 1.1rem;
+  gap: clamp(1.15rem, 2vw, 1.6rem);
   align-content: start;
 }
 
 .phase__body > p {
   margin: 0;
-  max-width: 44rem;
+  max-width: 58rem;
   line-height: 1.62;
 }
 
+/* Ships — what actually gets built in this phase.
+   NOT a grid on the <li>: the marker, the <strong> and the trailing text node
+   are three separate grid items, so a two-column track pushes the text into a
+   1.1rem column and it wraps one word per line. The marker is positioned out
+   of flow instead, which leaves the content as ordinary inline text. */
 .ships {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem clamp(1.5rem, 3vw, 2.75rem);
+}
+
+@media (min-width: 62rem) {
+  .ships {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .ships li {
-  display: grid;
-  grid-template-columns: 1.1rem 1fr;
-  gap: 0.7rem;
+  position: relative;
+  padding-left: 1.6rem;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--fg-dim);
+  text-wrap: pretty;
 }
 
 .ships li::before {
   content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
   width: 0.5rem;
   height: 0.5rem;
-  margin-top: 0.48rem;
   background: var(--accent-ctx);
 }
 
 .ships li strong {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .exit {
   border-top: 1px solid var(--line);
-  padding-top: 0.95rem;
+  padding-top: clamp(1rem, 1.8vw, 1.35rem);
   display: grid;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
 .exit__label {
@@ -3067,13 +3102,28 @@ p {
 .exit__cond {
   margin: 0;
   font-family: var(--f-serif);
-  font-size: 1.08rem;
-  line-height: 1.5;
+  font-size: clamp(1.08rem, 1.25vw, 1.28rem);
+  line-height: 1.48;
   color: var(--fg);
+  max-width: 54rem;
+  text-wrap: pretty;
 }
 
 @media (max-width: 54rem) {
   .phase {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .phase__side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.9rem;
+  }
+  .phase__no {
+    font-size: 2.1rem;
+  }
+  .phase__name {
+    flex: 1 1 100%;
   }
 }
