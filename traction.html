@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roadmap — Seva App</title>
-<meta name="description" content="Where Seva actually is: a working product, first bookings in electricians and physiotherapy, a four-stage plan to a real launch in one Varanasi locality, and four specific asks.">
+<meta name="description" content="Where Seva actually is: a working product, a five-phase plan opening on salons, elder care, maids and labour in one Varanasi locality, and four specific asks.">
 <meta name="theme-color" content="#0a0b0d">
 <link rel="canonical" href="https://seva-site.vercel.app/traction.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Seva App">
 <meta property="og:url" content="https://seva-site.vercel.app/traction.html">
 <meta property="og:title" content="Roadmap — Seva App">
-<meta property="og:description" content="Where Seva actually is: a working product, first bookings in electricians and physiotherapy, a four-stage plan to a real launch in one Varanasi locality, and four specific asks.">
+<meta property="og:description" content="Where Seva actually is: a working product, a five-phase plan opening on salons, elder care, maids and labour in one Varanasi locality, and four specific asks.">
 <meta property="og:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Roadmap — Seva App">
-<meta name="twitter:description" content="Where Seva actually is: a working product, first bookings in electricians and physiotherapy, a four-stage plan to a real launch in one Varanasi locality, and four specific asks.">
+<meta name="twitter:description" content="Where Seva actually is: a working product, a five-phase plan opening on salons, elder care, maids and labour in one Varanasi locality, and four specific asks.">
 <meta name="twitter:image" content="https://seva-site.vercel.app/assets/seva-banner.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260902a">
+<link rel="stylesheet" href="style.css?v=20260921a">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -74,7 +74,7 @@
         <div class="stat">
           <span class="stat__value">2</span>
           <span class="stat__label">Categories with real bookings</span>
-          <p class="stat__note">Electricians and physiotherapy. These are the beachhead categories and are treated as such in every plan.</p>
+          <p class="stat__note">Electricians and physiotherapy &mdash; the first bookings to run end to end, which is what proved the loop closes. The pilot now opens on salon work, elder care, maids and labour, where the weekly demand actually sits.</p>
         </div>
         <div class="stat">
           <span class="stat__value">39</span>
@@ -127,32 +127,114 @@
     <div class="wrap">
       <div class="section-head section-head--split reveal">
         <span class="eyebrow">The plan</span>
-        <h2 class="h2">Four stages to a real launch.</h2>
-        <p class="body">Ordered by which part of the flywheel is weakest, not by which feature is most interesting. Each stage exits on a condition, because a date would only tell you when we stopped.</p>
+        <h2 class="h2">Five phases, in the order the flywheel actually jams.</h2>
+        <p class="body">This is a working roadmap rather than a wish list: each phase names what gets built, why that comes before the rest, and the single condition that ends it. Phases exit on evidence, not on dates &mdash; a date only tells you when we stopped, a condition tells you whether it worked. Nothing in a later phase begins while an earlier condition is unmet.</p>
       </div>
 
-      <ol class="timeline reveal">
-        <li>
-          <span class="timeline__stage">Stage 01 &mdash; now</span>
-          <h3 class="h3">Make field onboarding bulletproof</h3>
-          <p>The entire ground strategy depends on signing workers up in person at labour areas. Every remaining rough edge in that flow &mdash; ID capture, locality entry, the Hindi wording &mdash; gets fixed before anyone spends a rupee on awareness. Exit condition: ten workers registered in the field without a single form failing.</p>
-        </li>
-        <li>
-          <span class="timeline__stage">Stage 02</span>
-          <h3 class="h3">Seed one locality densely</h3>
-          <p>Fifteen to twenty verified workers in one pocket, and QR posters in front of households on the same streets. Realtime booking alerts ship here, because a worker who misses requests is a worker who leaves. Exit condition: supply and demand present in the same locality at the same time.</p>
-        </li>
-        <li>
-          <span class="timeline__stage">Stage 03</span>
-          <h3 class="h3">Turn the flywheel ten times</h3>
-          <p>Ten real completed bookings, OTP-confirmed and rated, with at least some repeat customers. Matched by hand if the product cannot do it yet. Exit condition: a graph of completed bookings climbing in one locality &mdash; the only genuinely persuasive artefact this company can produce.</p>
-        </li>
-        <li>
-          <span class="timeline__stage">Stage 04</span>
-          <h3 class="h3">Measure, then widen</h3>
-          <p>Bookings per day, worker retention, customer repeat rate, average transaction value. Those four numbers decide whether the model moves to the next pocket. If they do not hold, the answer is to fix this locality &mdash; not to add a second one and average the numbers.</p>
-        </li>
-      </ol>
+      <div class="roadmap reveal">
+
+        <article class="phase phase--now">
+          <div class="phase__side">
+            <span class="phase__no">01</span>
+            <span class="phase__when">Now &middot; in progress</span>
+            <h3 class="phase__name">Turn on verified identity</h3>
+          </div>
+          <div class="phase__body">
+            <p>Everything downstream depends on the app knowing who someone really is. Until a worker signs in on their own handset, every trust guarantee rests on a typed phone number &mdash; workable for a demo, not for letting a stranger into a home. This phase is the last piece of engineering before the ground work starts.</p>
+            <ul class="ships">
+              <li><strong>SMS sign-in</strong> &mdash; a one-time code to a real handset, and the server takes identity from that session alone.</li>
+              <li><strong>Named administrators</strong> &mdash; approval rights held by specific people rather than a shared password.</li>
+              <li><strong>Audit trail</strong> &mdash; every approval, suspension and edit recorded against the person who made it.</li>
+              <li><strong>Worker binding</strong> &mdash; each existing worker claims their own row by signing in, one handset at a time.</li>
+            </ul>
+            <div class="exit">
+              <span class="exit__label">Ends when</span>
+              <p class="exit__cond">Ten workers have signed in on their own handsets and are bound to their own profiles, with no profile claimed by the wrong person.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase__side">
+            <span class="phase__no">02</span>
+            <span class="phase__when">Next</span>
+            <h3 class="phase__name">Seed supply at the labour chowk</h3>
+          </div>
+          <div class="phase__body">
+            <p>Supply comes first because demand for a marketplace with nobody on it is wasted. Labour is the opening category for one practical reason: those workers already gather in one place every morning, so onboarding costs a morning rather than a campaign. Household help and elder care are signed in the same pocket, through the same conversations.</p>
+            <ul class="ships">
+              <li><strong>Field onboarding, hardened</strong> &mdash; ID capture, locality entry and the Hindi wording fixed until the form never fails on a cheap handset.</li>
+              <li><strong>Locality mapping</strong> &mdash; a worker without GPS still gets placed correctly from a named neighbourhood.</li>
+              <li><strong>Verification queue</strong> &mdash; approvals turned around same-day, because a worker who waits a week does not come back.</li>
+            </ul>
+            <div class="exit">
+              <span class="exit__label">Ends when</span>
+              <p class="exit__cond">Twenty verified workers stand on the map inside one Varanasi pocket, concentrated in labour and household help rather than spread thin across thirty-nine categories.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase__side">
+            <span class="phase__no">03</span>
+            <span class="phase__when">Then</span>
+            <h3 class="phase__name">Open the four demand categories</h3>
+          </div>
+          <div class="phase__body">
+            <p>Demand goes onto the same streets the supply came from &mdash; not city-wide, not online. The four categories households already ask for weekly are the only ones promoted: salon work, elder care, maids and labour. Everything else stays live in the product but unadvertised, so the first experience is never a search that returns nobody.</p>
+            <ul class="ships">
+              <li><strong>QR posters in the pocket</strong> &mdash; on the doors of the households whose streets the workers were signed on.</li>
+              <li><strong>Realtime booking alerts</strong> &mdash; a worker who misses requests is a worker who leaves.</li>
+              <li><strong>Category-first entry</strong> &mdash; the app opens on the four, so a first-time user lands somewhere staffed.</li>
+            </ul>
+            <div class="exit">
+              <span class="exit__label">Ends when</span>
+              <p class="exit__cond">Supply and demand are present in the same locality in the same week, and a household has placed a request without anyone from Seva standing next to them.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase__side">
+            <span class="phase__no">04</span>
+            <span class="phase__when">The proof</span>
+            <h3 class="phase__name">Turn the wheel ten times</h3>
+          </div>
+          <div class="phase__body">
+            <p>Ten real completed bookings, confirmed by OTP and rated. Matched by hand where the product cannot do it yet &mdash; the point of this phase is evidence that the loop closes, not that it closes automatically. Repeat bookings matter more than new ones here, which is why maids and elder care carry this phase.</p>
+            <ul class="ships">
+              <li><strong>Completion OTP in the field</strong> &mdash; proven on real handsets in real homes, not in a test.</li>
+              <li><strong>Ratings prompt</strong> &mdash; asked at the moment the job ends, when the answer is honest.</li>
+              <li><strong>Repeat booking</strong> &mdash; rebook the same person in two taps, because that is the whole household-help relationship.</li>
+            </ul>
+            <div class="exit">
+              <span class="exit__label">Ends when</span>
+              <p class="exit__cond">A graph of completed bookings climbs in one locality, with at least some customers booking a second time &mdash; the only genuinely persuasive artefact this company can produce.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase__side">
+            <span class="phase__no">05</span>
+            <span class="phase__when">The decision</span>
+            <h3 class="phase__name">Measure, then widen</h3>
+          </div>
+          <div class="phase__body">
+            <p>Four numbers decide whether the model travels: bookings per day, worker retention, customer repeat rate, average transaction value. Commission starts collecting here, against completed jobs only. If the numbers do not hold, the answer is to fix this pocket &mdash; not to open a second one and average the two together until the problem disappears.</p>
+            <ul class="ships">
+              <li><strong>Metrics dashboard</strong> &mdash; the four numbers, visible without anyone having to ask for them.</li>
+              <li><strong>Commission collection</strong> &mdash; charged on completed jobs, never on signup, listing or rank.</li>
+              <li><strong>The second pocket</strong> &mdash; the same playbook, run again, by someone who is not the founder.</li>
+            </ul>
+            <div class="exit">
+              <span class="exit__label">Ends when</span>
+              <p class="exit__cond">The four numbers hold for a full month in one pocket, and the playbook has been run a second time without the founder in the room.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
 
       <div class="callout reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
         <span class="callout__label">The discipline behind this order</span>
@@ -312,6 +394,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20260902a"></script>
+<script src="script.js?v=20260921a"></script>
 </body>
 </html>

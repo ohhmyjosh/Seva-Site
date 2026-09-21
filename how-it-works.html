@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260902a">
+<link rel="stylesheet" href="style.css?v=20260921a">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -157,6 +157,155 @@
         </article>
       </div>
 
+      <figure class="figure reveal">
+        <div class="figure__head">
+          <h3 class="figure__title">Nothing the app can ask for reaches a table directly.</h3>
+          <span class="tag tag--live">Live today</span>
+        </div>
+        <div class="figure__stage">
+          <svg viewBox="0 0 820 290" role="img" aria-labelledby="diag1-title diag1-desc">
+            <title id="diag1-title">The request path in Seva</title>
+            <desc id="diag1-desc">Requests from the household app travel through a server-side function that checks identity and validates input before any database table is touched. The direct path from the app to the database is revoked and blocked.</desc>
+
+            <text class="d-tag d-tag--dim" x="119" y="40" text-anchor="middle">Public</text>
+            <rect class="d-box" x="24" y="56" width="190" height="88"></rect>
+            <text class="d-label" x="119" y="94" text-anchor="middle">Household app</text>
+            <text class="d-sub" x="119" y="116" text-anchor="middle">public key, in every phone</text>
+
+            <text class="d-tag" x="420" y="40" text-anchor="middle">Server-side function</text>
+            <rect class="d-box d-box--accent" x="315" y="48" width="210" height="104"></rect>
+            <text class="d-label" x="420" y="86" text-anchor="middle">Checks, then decides</text>
+            <text class="d-sub" x="420" y="108" text-anchor="middle">who is calling &middot; is this allowed</text>
+            <text class="d-sub" x="420" y="126" text-anchor="middle">is the input sane</text>
+
+            <text class="d-tag d-tag--dim" x="711" y="40" text-anchor="middle">Private</text>
+            <rect class="d-box" x="626" y="56" width="170" height="88"></rect>
+            <text class="d-label" x="711" y="94" text-anchor="middle">Database</text>
+            <text class="d-sub" x="711" y="116" text-anchor="middle">workers &middot; bookings &middot; IDs</text>
+
+            <line class="d-flow" x1="214" y1="100" x2="303" y2="100"></line>
+            <polygon class="d-arrow" points="315,100 303,95 303,105"></polygon>
+
+            <line class="d-flow" x1="525" y1="100" x2="614" y2="100"></line>
+            <polygon class="d-arrow" points="626,100 614,95 614,105"></polygon>
+
+            <path class="d-blocked" d="M119 144 L119 236 L711 236 L711 144"></path>
+            <line class="d-x" x1="403" y1="226" x2="427" y2="250"></line>
+            <line class="d-x" x1="427" y1="226" x2="403" y2="250"></line>
+            <text class="d-sub" x="415" y="274" text-anchor="middle">the direct path is revoked, not merely unused</text>
+          </svg>
+        </div>
+        <p class="figure__cap">Filtering the map inside the app is a convenience, never a safeguard: anything the app can ask for, anyone holding the app&rsquo;s public key can ask for. So the public key holds <strong>zero table privileges and zero column privileges</strong> &mdash; a number we measure rather than assume, and one that has to stay at zero for every release. Reading a worker&rsquo;s phone number, writing a booking, approving an applicant: each is a server-side function that decides for itself whether the caller is entitled to what they asked for.</p>
+      </figure>
+
+      <figure class="figure reveal">
+        <div class="figure__head">
+          <h3 class="figure__title">One switch closes every unverified path at once.</h3>
+          <span class="tag tag--progress">Built &middot; ships with phone sign-in</span>
+        </div>
+        <div class="figure__stage">
+          <svg viewBox="0 0 820 340" role="img" aria-labelledby="diag2-title diag2-desc">
+            <title id="diag2-title">The fail-closed switch</title>
+            <desc id="diag2-desc">A single setting is consulted by all seven places where someone can be identified by typing a phone number instead of signing in. Turning it off closes all seven at once, and if the setting cannot be read the answer defaults to closed.</desc>
+
+            <text class="d-tag" x="129" y="128" text-anchor="middle">One setting</text>
+            <rect class="d-box d-box--accent" x="24" y="140" width="210" height="76"></rect>
+            <text class="d-label" x="129" y="174" text-anchor="middle">Allow phone-only access</text>
+            <text class="d-sub" x="129" y="196" text-anchor="middle">on &middot; off &middot; unreadable</text>
+            <text class="d-sub" x="129" y="246" text-anchor="middle">If it cannot be read,</text>
+            <text class="d-sub" x="129" y="264" text-anchor="middle">the answer is no.</text>
+
+            <text class="d-tag d-tag--dim" x="530" y="22" text-anchor="start">Every place identity is decided</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 48, 446 48"></path>
+            <rect class="d-box" x="458" y="32" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="52">Find a worker from a number</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 92, 446 92"></path>
+            <rect class="d-box" x="458" y="76" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="96">Reveal a phone number</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 136, 446 136"></path>
+            <rect class="d-box" x="458" y="120" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="140">Create or fetch a profile</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 180, 446 180"></path>
+            <rect class="d-box" x="458" y="164" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="184">Open a worker&rsquo;s own profile</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 224, 446 224"></path>
+            <rect class="d-box" x="458" y="208" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="228">Let a worker edit their own row</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 268, 446 268"></path>
+            <rect class="d-box" x="458" y="252" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="272">List the bookings for a number</text>
+
+            <path class="d-flow" d="M234 178 C 330 178, 350 312, 446 312"></path>
+            <rect class="d-box d-box--accent" x="458" y="296" width="338" height="32"></rect>
+            <text class="d-sub" x="474" y="316">Authorise every booking action</text>
+          </svg>
+        </div>
+        <p class="figure__cap">Until real sign-in is switched on, a person can be recognised by typing their own mobile number. That is convenient and it is weaker than a verified session, so it was built with an off switch from the start &mdash; one setting, read by all seven places identity gets decided, closing them together rather than one file at a time. Two properties matter more than the switch itself: <strong>if the setting cannot be read the answer defaults to no</strong>, so a failure locks down instead of opening up; and turning it off never touches a signed-in user. The reversal is a single statement, which is why it can be thrown the moment something looks wrong rather than after a meeting.</p>
+      </figure>
+
+      <div class="section-head reveal" style="margin-top:clamp(3rem,6vw,5rem)">
+        <span class="eyebrow">The ledger</span>
+        <h3 class="h3">Eight defences, and an honest column for which ones are live.</h3>
+        <p class="body">Security claims age badly when nobody writes down what is actually running. This is the current state, not the intended one. Everything marked <em>built</em> exists in the codebase with automated tests against it and ships with phone sign-in.</p>
+      </div>
+
+      <div class="layers reveal">
+        <div class="layer">
+          <span class="layer__no">01</span>
+          <span class="layer__name">Admin approval</span>
+          <p class="layer__what">No worker is visible on the public map until a human reviews and approves them. Signup is fast; visibility is earned.</p>
+          <span class="layer__state"><span class="tag tag--live">Live</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">02</span>
+          <span class="layer__name">No direct table access</span>
+          <p class="layer__what">The public key carries zero table and zero column privileges. Every read and write goes through a server-side function &mdash; the diagram above.</p>
+          <span class="layer__state"><span class="tag tag--live">Live</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">03</span>
+          <span class="layer__name">Phone numbers are not client-readable</span>
+          <p class="layer__what">A worker&rsquo;s number is never sent to the browser. The two sides of a booking reach each other without either one holding the other&rsquo;s number.</p>
+          <span class="layer__state"><span class="tag tag--live">Live</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">04</span>
+          <span class="layer__name">Identity documents out of public storage</span>
+          <p class="layer__what">Government IDs and signatures sit outside any public bucket, unreachable by URL even for someone who guesses one.</p>
+          <span class="layer__state"><span class="tag tag--live">Live</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">05</span>
+          <span class="layer__name">Verified sign-in as the sole identity</span>
+          <p class="layer__what">A one-time code to a real handset, and the server takes the person&rsquo;s identity from that session rather than from anything the app claims.</p>
+          <span class="layer__state"><span class="tag tag--progress">Built</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">06</span>
+          <span class="layer__name">The fail-closed switch</span>
+          <p class="layer__what">One setting closing all seven unverified paths together, defaulting to closed when it cannot be read &mdash; the second diagram above.</p>
+          <span class="layer__state"><span class="tag tag--progress">Built</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">07</span>
+          <span class="layer__name">Named administrators, not a shared password</span>
+          <p class="layer__what">An admin is a specific signed-in person on a membership list. Removing someone takes effect on their next action, with no password to re-issue to everyone else.</p>
+          <span class="layer__state"><span class="tag tag--progress">Built</span></span>
+        </div>
+        <div class="layer">
+          <span class="layer__no">08</span>
+          <span class="layer__name">An audit trail that names the person</span>
+          <p class="layer__what">Every administrative change to a worker is recorded append-only, attributed to the individual who made it &mdash; derived by the database itself, so there is no field an app could fill in wrongly.</p>
+          <span class="layer__state"><span class="tag tag--progress">Built</span></span>
+        </div>
+      </div>
+
       <div class="callout reveal" style="margin-top:clamp(2.5rem,5vw,4rem)">
         <span class="callout__label">What is still being designed</span>
         <p>A formal dispute-resolution flow, an appeals process for suspended workers, refund handling, and an incident-response runbook do not exist as systems yet &mdash; today they are handled directly by the founder. They are named here rather than glossed over, because a partner deserves to know which parts of the safety story are architecture and which parts are still a person answering the phone.</p>
@@ -283,6 +432,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20260902a"></script>
+<script src="script.js?v=20260921a"></script>
 </body>
 </html>

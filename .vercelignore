@@ -1,3 +1,9 @@
 .vercel
 .env*.local
 .env
+
+# Stray pages from other projects (Espressoulster, Maxburn) — not Seva content.
+# Kept locally, never published under the Seva domain.
+m.html
+pg.html
+t.html
